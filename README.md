@@ -1,29 +1,53 @@
 # tdd-docker-projekt
 
-## Project setup
+# Docker ------------------------------------------------------
+
+## Build a image
+
 ```
-npm install
+docker build -t daviddocker .
 ```
 
-### Compiles and hot-reloads for development
+### Run docker image
+
 ```
-npm run serve
+docker run -it -p 8081:8080 --rm --name docker-container tdd-docker-projekt
 ```
 
-### Compiles and minifies for production
+### Process status
+
 ```
-npm run build
+docker ps
 ```
 
-### Run your unit tests
+# Heroku ------------------------------------------------------
+
+### Login heroku
+
 ```
-npm run test:unit
+heroku login
 ```
 
-### Lints and fixes files
+### Login heroku container
+
 ```
-npm run lint
+heroku container:login
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Build image for heroku
+
+```
+docker build -t registry.heroku.com/tdd-docker-projekt/web .
+```
+
+### Push image to heroku
+
+```
+docker push registry.heroku.com/tdd-docker-projekt/web
+```
+
+### Release image on heroku
+
+```
+heroku container:release --app tdd-docker-projekt web
+```
