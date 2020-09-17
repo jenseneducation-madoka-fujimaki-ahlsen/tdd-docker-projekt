@@ -2,61 +2,32 @@ const people = [
   {
     id: 0,
     name: "Madoka",
-    Participate: [events[3], events[4], events[6], events[7]],
-    Participated: [
-      {
-        event: events[0],
-        review: 5,
-      },
-      {
-        event: events[1],
-        review: 3,
-      },
-    ],
+    participate: [],
+    participated: [],
   },
   {
     id: 1,
     name: "Christian",
-    Participate: [events[4], events[6], events[7]],
-    Participated: [
-      {
-        event: events[0],
-        review: 3,
-      },
-    ],
+    participate: [],
+    participated: [],
   },
   {
     id: 2,
     name: "Jonatan",
-    Participate: [events[2], events[6]],
-    Participated: [
-      {
-        event: events[1],
-        review: "",
-      },
-    ],
+    participate: [],
+    participated: [],
   },
   {
     id: 3,
     name: "Hanna",
-    Participate: [events[2], events[5], events[6], events[7]],
-    Participated: [
-      {
-        event: events[1],
-        review: 4,
-      },
-    ],
+    participate: [],
+    participated: [],
   },
   {
     id: 4,
     name: "Emma",
-    Participate: [events[4], events[5], events[6], events[7]],
-    Participated: [
-      {
-        event: events[1],
-        review: 4,
-      },
-    ],
+    participate: [],
+    participated: [],
   },
 ];
 
@@ -174,16 +145,68 @@ const events = [
   },
 ];
 
-function getAnimals() {
-  const LS_KEY = "viewlist-animals";
+people[0].Participate = [events[3], events[4], events[6], events[7]];
+people[1].Participate = [events[4], events[6], events[7]];
+people[2].Participate = [events[2], events[6]];
+people[3].Participate = [events[2], events[5], events[6], events[7]];
+people[4].Participate = [events[4], events[5], events[6], events[7]];
+people[0].participated = [
+  {
+    event: events[0],
+    review: 5,
+  },
+  {
+    event: events[1],
+    review: 3,
+  },
+];
+people[1].participated = [
+  {
+    event: events[0],
+    review: 3,
+  },
+];
+people[2].participated = [
+  {
+    event: events[1],
+    review: "",
+  },
+];
+people[3].participated = [
+  {
+    event: events[1],
+    review: 4,
+  },
+];
+people[4].participated = [
+  {
+    event: events[1],
+    review: 4,
+  },
+];
+
+function getEvents() {
+  const LS_KEY = "viewlist-events";
   let fromLs = localStorage.getItem(LS_KEY);
 
   if (!fromLs) {
-    localStorage.setItem(LS_KEY, JSON.stringify(defaultData));
+    localStorage.setItem(LS_KEY, JSON.stringify(events));
     fromLs = localStorage.getItem(LS_KEY);
   }
 
   return JSON.parse(fromLs);
 }
 
-export { getAnimals };
+function getPeople() {
+  const LS_KEY = "viewlist-people";
+  let fromLs = localStorage.getItem(LS_KEY);
+
+  if (!fromLs) {
+    localStorage.setItem(LS_KEY, JSON.stringify(people));
+    fromLs = localStorage.getItem(LS_KEY);
+  }
+
+  return JSON.parse(fromLs);
+}
+
+export { getEvents, getPeople };
