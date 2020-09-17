@@ -37,6 +37,7 @@ const events = [
     title: "Höstens picknick",
     place: "Vasaparken",
     date: "2020-09-15",
+    image: "picnic.jpg",
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
     host: people[0].name,
@@ -51,6 +52,7 @@ const events = [
     title: "Löpning och avslappnad middag",
     place: "Farsta",
     date: "2020-08-01",
+    image: "run.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu.",
     host: people[2].name,
@@ -69,8 +71,9 @@ const events = [
   {
     id: 2,
     title: "Figur ritning",
-    place: "Vasaparken",
+    place: "Gamla stan",
     date: "2020-10-22",
+    image: "drawing.jpg",
     description:
       "Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
     host: people[3].name,
@@ -80,8 +83,9 @@ const events = [
   {
     id: 3,
     title: "Laga japansk mat",
-    place: "Vasaparken",
+    place: "Odenplan",
     date: "2020-10-01",
+    image: "food.jpg",
     description:
       "Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
     host: people[0].name,
@@ -91,8 +95,9 @@ const events = [
   {
     id: 4,
     title: "Game kväll",
-    place: "Vasaparken",
+    place: "Telefonplan",
     date: "2020-09-25",
+    image: "game.jpg",
     description:
       "Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec. Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. ",
     host: people[4].name,
@@ -102,8 +107,9 @@ const events = [
   {
     id: 5,
     title: "Språkkafé svenska",
-    place: "Vasaparken",
+    place: "Odenplan",
     date: "2020-11-30",
+    image: "sweden.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
     host: people[3].name,
@@ -113,8 +119,9 @@ const events = [
   {
     id: 6,
     title: "Frontend utvecklare",
-    place: "Vasaparken",
+    place: "Stockholm city",
     date: "2020-11-15",
+    image: "pc.jpg",
     description:
       "Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
     host: people[2].name,
@@ -130,8 +137,9 @@ const events = [
   {
     id: 7,
     title: "Jul fest",
-    place: "Vasaparken",
+    place: "Slussen",
     date: "2020-12-20",
+    image: "christmas.jpg",
     description:
       "Libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
     host: people[3].name,

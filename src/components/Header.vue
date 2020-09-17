@@ -1,10 +1,15 @@
 <template>
   <div id="header">
-    <img class="logo" alt="logo" src="@/assets/logo.svg" />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <img
+      @click="$router.push('/')"
+      class="logo"
+      alt="logo"
+      src="@/assets/logo.svg"
+    />
+    <div class="nav">
+      <router-link to="/">Logga in</router-link>
+      <router-link to="/about">Bli medlem</router-link>
+    </div>
   </div>
 </template>
 
@@ -16,13 +21,32 @@ export default {};
 @import "../scss/main.scss";
 
 #header {
-  height: 64px;
+  height: 72px;
   padding: 0 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background: rgb(66, 66, 66);
+  background: linear-gradient(
+    90deg,
+    rgba(66, 66, 66, 1) 0%,
+    rgba(255, 100, 163, 1) 100%
+  );
 }
 
 .logo {
-  height: 50px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.nav {
+  a {
+    color: $white;
+    text-decoration: none;
+    padding: 16px;
+  }
+  a:hover {
+    color: $green;
+  }
 }
 </style>
