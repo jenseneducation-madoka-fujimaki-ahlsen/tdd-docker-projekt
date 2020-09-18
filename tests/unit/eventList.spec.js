@@ -2,12 +2,15 @@ import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
 import EventList from "@/views/Home.vue";
 import Home from "@/views/Home.vue";
 import Vuex from "vuex";
+import VueRouter from "vue-router";
 
 const localVue = createLocalVue();
+localVue.use(VueRouter);
 localVue.use(Vuex);
+const router = new VueRouter();
 
 describe("Home.vue", () => {
-  let wrapper;
+  let wrapper, wrapper2;
   let store;
   let events = [
     {
@@ -36,25 +39,38 @@ describe("Home.vue", () => {
 
   beforeEach(() => {
     const storeOptions = {
-      state: { events: events.events, people: events.people },
+      state: { events: events, people: [] },
       actions: { getEvents: jest.fn(), getPeople: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
-    wrapper = mount(EventList, {
-      parentComponent: { Home },
-      propsData: { events },
 
+    wrapper = shallowMount(Home, {
+      localVue,
+      router,
+      store,
+      stubs: {
+        Header: true,
+        Footer: true,
+      },
+    });
+
+    wrapper2 = shallowMount(EventList, {
+      localVue,
+      store,
+      parentComponent: wrapper,
+      propsData: { events },
       stubs: {
         Event: true,
       },
     });
   });
 
-  it("should get event data from Home when renders", () => {
+  it("should get event data from Home.vue when renders", () => {
     //Arrange
-    const expected = wrapper.parentComponent.events.length;
+    const expected = wrapper.vm.events.length;
     //Act
-    let actual = wrapper.vm.events.length;
+    let actual = wrapper2.vm.events.length;
+
     //Assert
     expect(actual).toBe(expected);
   });

@@ -62,7 +62,8 @@ export default {
   }
 
   p {
-    color: $light-gray2;
+    color: $black;
+    font-size: 0.8rem;
   }
 
   nav {
@@ -72,7 +73,7 @@ export default {
       margin: 0 20px 24px;
       text-decoration: none;
       color: $white;
-      font-size: 1.5rem;
+      font-size: 1rem;
 
       &:hover {
         color: $green;

@@ -8,7 +8,7 @@
         <img src="@/assets/people.jpg" alt="" />
       </div>
       <img class="line" src="@/assets/line.png" alt="" />
-      <button>Bli Medlem</button>
+      <button>Bli medlem</button>
     </section>
     <div class="upcoming-events">
       <h3>Kommande evenemang</h3>
@@ -98,8 +98,7 @@ export default {
       height: 1000px;
       top: 40%;
       left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       opacity: 0.7;
     }
 
@@ -107,8 +106,6 @@ export default {
       position: absolute;
       top: 55%;
       left: 240px;
-      -ms-transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
     }
   }

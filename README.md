@@ -1,11 +1,11 @@
 # tdd-docker-projekt
 
-# Docker ------------------------------------------------------
+# Docker ----------------------------------------------
 
 ## Build a image
 
 ```
-docker build -t daviddocker .
+docker build -t tdd-docker-projekt .
 ```
 
 ### Run docker image
@@ -20,7 +20,7 @@ docker run -it -p 8081:8080 --rm --name docker-container tdd-docker-projekt
 docker ps
 ```
 
-# Heroku ------------------------------------------------------
+# Heroku ------------------------------------------------
 
 ### Login heroku
 
