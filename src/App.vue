@@ -7,5 +7,6 @@
 <style lang="scss">
 @import "./scss/main.scss";
 #app {
+  height: 100%;
 }
 </style>

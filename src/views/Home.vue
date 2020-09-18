@@ -1,7 +1,6 @@
 <template>
   <div id="home">
     <Header />
-
     <section class="hero">
       <p>Hitta likasinnade vänner med meetapp!</p>
       <div class="img-wrap">
@@ -9,6 +8,7 @@
       </div>
       <img class="line" src="@/assets/line.png" alt="" />
       <button>Bli medlem</button>
+      <Register v-if="registerIsVisible" />
     </section>
     <div class="upcoming-events">
       <h3>Kommande evenemang</h3>
@@ -54,6 +54,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 72px, auto, auto 40px;
+  height: 100%;
+  position: relative;
 
   .hero {
     width: 100%;

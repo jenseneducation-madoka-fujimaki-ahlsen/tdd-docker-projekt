@@ -1,5 +1,10 @@
 <template>
   <div id="header">
+    <div
+      class="overlay"
+      v-if="loginIsVisible || registerIsVisible"
+      v-on:click="hideForm"
+    ></div>
     <div class="header-wrap">
       <img
         @click="$router.push('/')"
@@ -31,17 +36,40 @@ export default {
     Register,
   },
   data: () => ({
-    loginIsVisible: false,
-    registerIsVisible: false,
+    // loginIsVisible: false,
+    // registerIsVisible: false,
   }),
+  computed: {
+    loginIsVisible() {
+      return this.$store.state.loginIsVisible;
+    },
+    registerIsVisible() {
+      return this.$store.state.registerIsVisible;
+    },
+  },
   methods: {
     showLoginForm() {
-      this.registerIsVisible = false;
-      this.loginIsVisible = true;
+      this.$store.dispatch("showLoginForm");
+      // if (this.loginIsVisible == false) {
+      //   this.registerIsVisible = false;
+      //   this.loginIsVisible = true;
+      // } else {
+      //   this.loginIsVisible = false;
+      // }
     },
     showRegisterForm() {
-      this.registerIsVisible = true;
-      this.loginIsVisible = false;
+      this.$store.dispatch("showRegisterForm");
+      // if (this.registerIsVisible == false) {
+      //   this.registerIsVisible = true;
+      //   this.loginIsVisible = false;
+      // } else {
+      //   this.registerIsVisible = false;
+      // }
+    },
+    hideForm() {
+      this.$store.dispatch("hideForm");
+      // this.registerIsVisible = false;
+      // this.loginIsVisible = false;
     },
   },
 };
@@ -49,6 +77,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/main.scss";
+
+#header {
+  height: 100%;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $black;
+  z-index: 999;
+}
 
 .header-wrap {
   height: 72px;
@@ -74,6 +117,7 @@ export default {
     color: $white;
     text-decoration: none;
     padding: 16px;
+    cursor: pointer;
   }
   a:hover {
     color: $green;
