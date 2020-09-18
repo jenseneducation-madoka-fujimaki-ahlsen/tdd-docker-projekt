@@ -7,8 +7,8 @@
       src="@/assets/logo.svg"
     />
     <div class="nav">
-      <router-link to="/">Logga in</router-link>
-      <router-link to="/about">Bli medlem</router-link>
+      <router-link class="login-button" to="/">Logga in</router-link>
+      <router-link class="register-button" to="/about">Bli medlem</router-link>
     </div>
   </div>
 </template>

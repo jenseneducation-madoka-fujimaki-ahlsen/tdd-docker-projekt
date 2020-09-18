@@ -1,7 +1,5 @@
 import { shallowMount, createLocalVue, RouterLinkStub } from "@vue/test-utils";
 import Home from "@/views/Home.vue";
-import EventList from "@/components/EventList.vue";
-import Event from "@/components/Event.vue";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 
