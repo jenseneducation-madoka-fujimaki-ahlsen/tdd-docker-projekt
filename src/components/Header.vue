@@ -8,12 +8,12 @@
         src="@/assets/logo.svg"
       />
       <div class="nav">
-        <button v-on:click="showLoginForm" class="login-button">
+        <a v-on:click="showLoginForm" class="login-button">
           Logga in
-        </button>
-        <button v-on:click="showRegisterForm" class="register-button">
+        </a>
+        <a v-on:click="showRegisterForm" class="register-button">
           Bli medlem
-        </button>
+        </a>
       </div>
     </div>
     <Login v-if="loginIsVisible" />

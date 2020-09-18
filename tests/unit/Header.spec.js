@@ -6,6 +6,7 @@ import {
 } from "@vue/test-utils";
 import Header from "@/components/Header.vue";
 import Login from "@/components/Login.vue";
+import Register from "@/components/Register.vue";
 import VueRouter from "vue-router";
 
 const localVue = createLocalVue();
@@ -35,6 +36,19 @@ describe("Header.vue", () => {
     await button.trigger("click");
     const childComponent = wrapper.findComponent(Login);
     let actual = childComponent.find("#login").exists();
+    //Assert
+    expect(actual).toBe(expected);
+  });
+
+  it("should appear register form when clicking on button 'bli medlem'", async () => {
+    //Arrange
+    const expected = true;
+    const button = wrapper.find(".register-button");
+
+    //Act
+    await button.trigger("click");
+    const childComponent = wrapper.findComponent(Register);
+    let actual = childComponent.find("#register").exists();
     //Assert
     expect(actual).toBe(expected);
   });
