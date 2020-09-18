@@ -1,5 +1,11 @@
-import { shallowMount, createLocalVue, RouterLinkStub } from "@vue/test-utils";
+import {
+  shallowMount,
+  mount,
+  createLocalVue,
+  RouterLinkStub,
+} from "@vue/test-utils";
 import Header from "@/components/Header.vue";
+import Login from "@/components/Login.vue";
 import VueRouter from "vue-router";
 
 const localVue = createLocalVue();
@@ -11,7 +17,7 @@ describe("Header.vue", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(Header, {
+    wrapper = mount(Header, {
       localVue,
       router,
       stubs: {
@@ -24,9 +30,11 @@ describe("Header.vue", () => {
     //Arrange
     const expected = true;
     const button = wrapper.find(".login-button");
+
     //Act
     await button.trigger("click");
-    let actual = wrapper.find("#login").exists();
+    const childComponent = wrapper.findComponent(Login);
+    let actual = childComponent.find("#login").exists();
     //Assert
     expect(actual).toBe(expected);
   });

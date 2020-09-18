@@ -1,26 +1,56 @@
 <template>
   <div id="header">
-    <img
-      @click="$router.push('/')"
-      class="logo"
-      alt="logo"
-      src="@/assets/logo.svg"
-    />
-    <div class="nav">
-      <router-link class="login-button" to="/">Logga in</router-link>
-      <router-link class="register-button" to="/about">Bli medlem</router-link>
+    <div class="header-wrap">
+      <img
+        @click="$router.push('/')"
+        class="logo"
+        alt="logo"
+        src="@/assets/logo.svg"
+      />
+      <div class="nav">
+        <button v-on:click="showLoginForm" class="login-button">
+          Logga in
+        </button>
+        <button v-on:click="showRegisterForm" class="register-button">
+          Bli medlem
+        </button>
+      </div>
     </div>
+    <Login v-if="loginIsVisible" />
+    <Register v-if="registerIsVisible" />
   </div>
 </template>
 
 <script>
-export default {};
+import Login from "@/components/Login";
+import Register from "@/components/Register";
+
+export default {
+  components: {
+    Login,
+    Register,
+  },
+  data: () => ({
+    loginIsVisible: false,
+    registerIsVisible: false,
+  }),
+  methods: {
+    showLoginForm() {
+      this.registerIsVisible = false;
+      this.loginIsVisible = true;
+    },
+    showRegisterForm() {
+      this.registerIsVisible = true;
+      this.loginIsVisible = false;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/main.scss";
 
-#header {
+.header-wrap {
   height: 72px;
   padding: 0 24px;
   display: flex;
