@@ -3,7 +3,7 @@
     <div
       class="overlay"
       v-if="loginFormIsVisible || registerFormIsVisible"
-      v-on:click="hideForm"
+      v-on:click="hideModal"
     ></div>
     <div class="header-wrap">
       <img
@@ -51,8 +51,8 @@ export default {
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
     },
-    hideForm() {
-      this.$store.dispatch("hideForm");
+    hideModal() {
+      this.$store.dispatch("hideModal");
     },
   },
 };
@@ -60,10 +60,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/main.scss";
-
-#header {
-  height: 100%;
-}
 
 .overlay {
   width: 100%;

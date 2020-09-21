@@ -2,7 +2,7 @@
   <div id="login">
     <div class="login-wrap">
       <a class="close-wrap">
-        <img src="@/assets/close.svg" v-on:click="hideForm" alt="" />
+        <img src="@/assets/close.svg" v-on:click="hideModal" alt="" />
       </a>
 
       <h2>Logga in</h2>
@@ -37,8 +37,8 @@ export default {
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
     },
-    hideForm() {
-      this.$store.dispatch("hideForm");
+    hideModal() {
+      this.$store.dispatch("hideModal");
     },
   },
 };

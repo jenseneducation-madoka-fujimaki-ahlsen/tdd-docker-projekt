@@ -25,7 +25,7 @@ describe("Event.vue", () => {
   beforeEach(() => {
     storeOptions = {
       state: { login: false, loginFormIsVisible: false },
-      actions: { checkLogin: jest.fn() },
+      actions: { checkLogin: jest.fn(), showEventDetail: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
 
@@ -34,6 +34,15 @@ describe("Event.vue", () => {
       localVue,
       store,
     });
+  });
+
+  it("should calls store action 'showEventDetail' when event card is clicked", () => {
+    //Arrange
+    let card = wrapper.find(".event-wrap");
+    //Act
+    card.trigger("click");
+    //Assert
+    expect(storeOptions.actions.showEventDetail).toHaveBeenCalled();
   });
 
   it("should calls store action 'checkLogin' when button 'Delta' is clicked", () => {

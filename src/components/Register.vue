@@ -2,7 +2,7 @@
   <div id="register">
     <div class="register-wrap">
       <a class="close-wrap">
-        <img src="@/assets/close.svg" v-on:click="hideForm" alt="" />
+        <img src="@/assets/close.svg" v-on:click="hideModal" alt="" />
       </a>
       <h2>Skapa ett konto</h2>
       <form>
@@ -42,8 +42,8 @@ export default {
     showLoginForm() {
       this.$store.dispatch("showLoginForm");
     },
-    hideForm() {
-      this.$store.dispatch("hideForm");
+    hideModal() {
+      this.$store.dispatch("hideModal");
     },
   },
 };

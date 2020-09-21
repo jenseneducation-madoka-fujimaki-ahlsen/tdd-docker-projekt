@@ -1,6 +1,7 @@
 <template>
   <div id="home">
     <Header />
+    <EventDetail v-if="eventDetailIsVisible" />
     <section class="hero">
       <p>Hitta likasinnade vänner med meetapp!</p>
       <div class="img-wrap">
@@ -21,6 +22,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import EventList from "@/components/EventList.vue";
+import EventDetail from "@/components/EventDetail.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
@@ -28,6 +30,7 @@ export default {
   components: {
     Header,
     EventList,
+    EventDetail,
     Footer,
   },
   data: () => ({}),
@@ -44,6 +47,9 @@ export default {
     },
     registerIsVisible() {
       return this.$store.state.registerIsVisible;
+    },
+    eventDetailIsVisible() {
+      return this.$store.state.eventDetailIsVisible;
     },
   },
   methods: {

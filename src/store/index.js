@@ -9,6 +9,7 @@ export default new Vuex.Store({
     people: [],
     loginFormIsVisible: false,
     registerFormIsVisible: false,
+    eventDetailIsVisible: true,
     login: false,
   },
   mutations: {
@@ -34,9 +35,10 @@ export default new Vuex.Store({
         state.registerFormIsVisible = false;
       }
     },
-    hideForm(state) {
+    hideModal(state) {
       state.registerFormIsVisible = false;
       state.loginFormIsVisible = false;
+      state.eventDetailIsVisible = false;
     },
     checkLogin(state) {
       if (state.login == true) {
@@ -44,6 +46,9 @@ export default new Vuex.Store({
       } else {
         state.loginFormIsVisible = true;
       }
+    },
+    showEventDetail(state) {
+      state.eventDetailIsVisible = true;
     },
   },
   actions: {
@@ -59,11 +64,14 @@ export default new Vuex.Store({
     showRegisterForm(context) {
       context.commit("showRegisterForm");
     },
-    hideForm(context) {
-      context.commit("hideForm");
+    hideModal(context) {
+      context.commit("hideModal");
     },
     checkLogin(context) {
       context.commit("checkLogin");
+    },
+    showEventDetail(context) {
+      context.commit("showEventDetail");
     },
   },
   modules: {},

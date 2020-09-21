@@ -1,24 +1,26 @@
 <template>
   <div id="event">
-    <div class="image">
-      <img :src="require(`@/assets/${event.image}`)" alt="" />
-    </div>
-    <p class="date">{{ event.date }}</p>
-    <p class="title">{{ event.title }}</p>
-    <div class="button-wrap">
-      <div class="place-wrap">
-        <div class="place">
-          <img src="@/assets/location.svg" alt="" />
-          <p>{{ event.place }}</p>
-        </div>
-        <p class="participant">
-          deltagare: {{ event.participant.length }} personer
-        </p>
+    <div class="event-wrap" @click="showEventDetail">
+      <div class="image">
+        <img :src="require(`@/assets/${event.image}`)" alt="" />
       </div>
-      <button class="join-button" @click="checkLogin">
-        Delta
-      </button>
+      <p class="date">{{ event.date }}</p>
+      <p class="title">{{ event.title }}</p>
+      <div class="button-wrap">
+        <div class="place-wrap">
+          <div class="place">
+            <img src="@/assets/location.svg" alt="" />
+            <p>{{ event.place }}</p>
+          </div>
+          <p class="participant">
+            deltagare: {{ event.participant.length }} personer
+          </p>
+        </div>
+      </div>
     </div>
+    <button class="join-button" @click="checkLogin">
+      Delta
+    </button>
   </div>
 </template>
 
@@ -29,13 +31,21 @@ export default {
     checkLogin() {
       this.$store.dispatch("checkLogin");
     },
+    showEventDetail() {
+      this.$store.dispatch("showEventDetail");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/scss/main.scss";
+
 #event {
+  display: flex;
+}
+
+.event-wrap {
   border: solid 2px $pink;
   height: 360px;
   text-align: left;
@@ -89,14 +99,17 @@ export default {
         margin-right: 8px;
       }
     }
-
-    button {
-      min-width: 80px;
-      font-size: 16px;
-      line-height: 0;
-      height: 40px;
-    }
   }
+}
+
+button {
+  min-width: 80px;
+  font-size: 16px;
+  line-height: 0;
+  height: 40px;
+  position: absolute;
+
+  margin: 320px 8px 8px 230px;
 }
 
 #event:hover {
