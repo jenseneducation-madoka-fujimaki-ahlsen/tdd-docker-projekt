@@ -41,12 +41,14 @@ export default new Vuex.Store({
       state.loginFormIsVisible = false;
       state.eventDetailIsVisible = false;
     },
-    checkLogin(state) {
+    checkLogin(state, id) {
       if (state.login == true) {
         state.loginFormIsVisible = false;
       } else {
         state.loginFormIsVisible = true;
+        state.eventDetailIsVisible = false;
       }
+      state.joinEventId = id;
     },
     showEventDetail(state, id) {
       state.eventDetailIsVisible = true;
@@ -69,8 +71,8 @@ export default new Vuex.Store({
     hideModal(context) {
       context.commit("hideModal");
     },
-    checkLogin(context) {
-      context.commit("checkLogin");
+    checkLogin(context, id) {
+      context.commit("checkLogin", id);
     },
     showEventDetail(context, id) {
       context.commit("showEventDetail", id);

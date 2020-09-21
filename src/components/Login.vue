@@ -52,8 +52,9 @@ export default {
   width: 500px;
   height: 600px;
   position: fixed;
-  top: 80px;
-  right: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 10px;
   z-index: 999;
   display: flex;
