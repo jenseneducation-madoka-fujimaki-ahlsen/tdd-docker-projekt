@@ -24,12 +24,15 @@ describe("Login.vue", () => {
 
   beforeEach(() => {
     storeOptions = {
-      state: { login: false, loginFormIsVisible: false },
+      state: { loggedIn: false },
       actions: { login: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
 
     wrapper = shallowMount(Login, {
+      data: () => ({
+        valid: true,
+      }),
       localVue,
       store,
     });

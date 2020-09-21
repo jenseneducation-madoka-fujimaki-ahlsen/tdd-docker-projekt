@@ -54,6 +54,9 @@ export default new Vuex.Store({
       state.eventDetailIsVisible = true;
       state.selectedEventId = id;
     },
+    login(state) {
+      state.loggedIn == true;
+    },
   },
   actions: {
     getEvents(context) {
@@ -76,6 +79,9 @@ export default new Vuex.Store({
     },
     showEventDetail(context, id) {
       context.commit("showEventDetail", id);
+    },
+    login(context) {
+      context.commit("login");
     },
   },
   modules: {},

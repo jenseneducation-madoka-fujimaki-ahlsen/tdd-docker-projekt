@@ -8,20 +8,29 @@
       <h2>Logga in</h2>
       <form>
         <input
+          v-model="userName"
           class="username"
           type="text"
           placeholder="Användarnamn"
           required="required"
+          @keyup="checkForm()"
         />
         <input
+          v-model="password"
           class="password"
           type="password"
           placeholder="Lösenord"
           required="required"
+          @keyup="checkForm()"
+          minlength="5"
         />
+        <p class="password-text">
+          innehåller minst 5 tecken
+        </p>
         <button
-          type="submit"
-          :disabled="checkForm()"
+          type="button"
+          @click="login"
+          :disabled="!valid"
           :class="{ 'not-valid': !valid }"
         >
           Logga in
@@ -38,6 +47,8 @@
 <script>
 export default {
   data: () => ({
+    userName: "",
+    password: "",
     valid: false,
   }),
   methods: {
@@ -47,7 +58,23 @@ export default {
     hideModal() {
       this.$store.dispatch("hideModal");
     },
-    checkForm() {},
+    checkForm() {
+      if (this.userName !== "" && this.validPassword(this.password)) {
+        this.valid = true;
+      } else {
+        this.valid = false;
+      }
+    },
+    login() {
+      this.$store.dispatch("login");
+    },
+    validPassword: function(password) {
+      if (password.length >= 5) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 </script>
@@ -95,6 +122,10 @@ export default {
       border: none;
       border-bottom: 1px solid $dark-gray;
       font-size: 16px;
+    }
+    .password-text {
+      color: $light-gray;
+      margin: 0 auto 0 0;
     }
 
     button {
