@@ -4,6 +4,7 @@ const people = [
     name: "Madoka",
     email: "madoka@madoka.com",
     password: "madoka123",
+    image: "1.jpg",
     participate: [],
     participated: [],
   },
@@ -12,6 +13,7 @@ const people = [
     name: "Christian",
     email: "christian@christian.com",
     password: "christian123",
+    image: "2.jpg",
     participate: [],
     participated: [],
   },
@@ -20,6 +22,7 @@ const people = [
     name: "Jonatan",
     email: "jonatan@jonatan.com",
     password: "jonatan123",
+    image: "3.jpg",
     participate: [],
     participated: [],
   },
@@ -28,6 +31,7 @@ const people = [
     name: "Hanna",
     email: "hanna@hanna.com",
     password: "hanna123",
+    image: "4.jpg",
     participate: [],
     participated: [],
   },
@@ -36,6 +40,7 @@ const people = [
     name: "Emma",
     email: "emma@emma.com",
     password: "emma123",
+    image: "5.jpg",
     participate: [],
     participated: [],
   },
@@ -50,11 +55,11 @@ const events = [
     image: "picnic.jpg",
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
-    host: people[0].name,
-    participant: [people[0].name, people[1].name, people[3].name],
+    host: people[0].image,
+    participant: [people[0].image, people[1].image, people[3].image],
     reviews: [
-      { person: people[0].name, review: 5 },
-      { person: people[1].name, review: 3 },
+      { person: people[0].image, review: 5 },
+      { person: people[1].image, review: 3 },
     ],
   },
   {
@@ -65,17 +70,17 @@ const events = [
     image: "run.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu.",
-    host: people[2].name,
+    host: people[2].image,
     participant: [
-      people[0].name,
-      people[2].name,
-      people[3].name,
-      people[4].name,
+      people[0].image,
+      people[2].image,
+      people[3].image,
+      people[4].image,
     ],
     reviews: [
-      { person: people[0].name, review: 3 },
-      { person: people[3].name, review: 4 },
-      { person: people[4].name, review: 4 },
+      { person: people[0].image, review: 3 },
+      { person: people[3].image, review: 4 },
+      { person: people[4].image, review: 4 },
     ],
   },
   {
@@ -86,8 +91,8 @@ const events = [
     image: "drawing.jpg",
     description:
       "Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
-    host: people[3].name,
-    participant: [people[3].name, people[2].name],
+    host: people[3].image,
+    participant: [people[3].image, people[2].image],
     reviews: [],
   },
   {
@@ -98,8 +103,8 @@ const events = [
     image: "food.jpg",
     description:
       "Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
-    host: people[0].name,
-    participant: [people[0].name],
+    host: people[0].image,
+    participant: [people[0].image],
     reviews: [],
   },
   {
@@ -110,8 +115,8 @@ const events = [
     image: "game.jpg",
     description:
       "Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec. Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. ",
-    host: people[4].name,
-    participant: [people[0].name, people[1].name, people[4].name],
+    host: people[4].image,
+    participant: [people[0].image, people[1].image, people[4].image],
     reviews: [],
   },
   {
@@ -122,8 +127,8 @@ const events = [
     image: "sweden.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
-    host: people[3].name,
-    participant: [people[3].name, people[4].name],
+    host: people[3].image,
+    participant: [people[3].image, people[4].image],
     reviews: [],
   },
   {
@@ -134,13 +139,13 @@ const events = [
     image: "pc.jpg",
     description:
       "Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
-    host: people[2].name,
+    host: people[2].image,
     participant: [
-      people[0].name,
-      people[1].name,
-      people[2].name,
-      people[3].name,
-      people[4].name,
+      people[0].image,
+      people[1].image,
+      people[2].image,
+      people[3].image,
+      people[4].image,
     ],
     reviews: [],
   },
@@ -152,12 +157,12 @@ const events = [
     image: "christmas.jpg",
     description:
       "Libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
-    host: people[3].name,
+    host: people[3].image,
     participant: [
-      people[0].name,
-      people[1].name,
-      people[3].name,
-      people[4].name,
+      people[0].image,
+      people[1].image,
+      people[3].image,
+      people[4].image,
     ],
     reviews: [],
   },

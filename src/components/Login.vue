@@ -64,6 +64,7 @@ export default {
     width: 40px;
     align-self: flex-end;
     margin: 16px 16px 0 auto;
+    cursor: pointer;
   }
 
   h2 {

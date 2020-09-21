@@ -9,8 +9,9 @@ export default new Vuex.Store({
     people: [],
     loginFormIsVisible: false,
     registerFormIsVisible: false,
-    eventDetailIsVisible: true,
+    eventDetailIsVisible: false,
     login: false,
+    selectedEventId: "",
   },
   mutations: {
     getEvents(state) {
@@ -47,8 +48,9 @@ export default new Vuex.Store({
         state.loginFormIsVisible = true;
       }
     },
-    showEventDetail(state) {
+    showEventDetail(state, id) {
       state.eventDetailIsVisible = true;
+      state.selectedEventId = id;
     },
   },
   actions: {
@@ -70,8 +72,8 @@ export default new Vuex.Store({
     checkLogin(context) {
       context.commit("checkLogin");
     },
-    showEventDetail(context) {
-      context.commit("showEventDetail");
+    showEventDetail(context, id) {
+      context.commit("showEventDetail", id);
     },
   },
   modules: {},

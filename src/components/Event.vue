@@ -1,6 +1,6 @@
 <template>
   <div id="event">
-    <div class="event-wrap" @click="showEventDetail">
+    <div class="event-wrap" @click="showEventDetail(event.id)">
       <div class="image">
         <img :src="require(`@/assets/${event.image}`)" alt="" />
       </div>
@@ -21,18 +21,34 @@
     <button class="join-button" @click="checkLogin">
       Delta
     </button>
+    <EventDetail
+      v-show="eventDetailIsVisible == true && selectedEventId == event.id"
+      v-bind:event="event"
+    />
   </div>
 </template>
 
 <script>
+import EventDetail from "@/components/EventDetail.vue";
 export default {
+  components: {
+    EventDetail,
+  },
   props: ["event"],
+  computed: {
+    eventDetailIsVisible() {
+      return this.$store.state.eventDetailIsVisible;
+    },
+    selectedEventId() {
+      return this.$store.state.selectedEventId;
+    },
+  },
   methods: {
     checkLogin() {
       this.$store.dispatch("checkLogin");
     },
-    showEventDetail() {
-      this.$store.dispatch("showEventDetail");
+    showEventDetail(id) {
+      this.$store.dispatch("showEventDetail", id);
     },
   },
 };
@@ -113,9 +129,6 @@ button {
 }
 
 #event:hover {
-  // transform: translatey(-10px);
-  // box-shadow: 1px 1px 24px #000000;
-
   .image {
     img {
       transform: scale(1.2);
