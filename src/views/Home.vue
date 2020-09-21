@@ -7,8 +7,7 @@
         <img src="@/assets/people.jpg" alt="" />
       </div>
       <img class="line" src="@/assets/line.png" alt="" />
-      <button>Bli medlem</button>
-      <Register v-if="registerIsVisible" />
+      <button v-on:click="showRegisterForm">Bli medlem</button>
     </section>
     <div class="upcoming-events">
       <h3>Kommande evenemang</h3>
@@ -42,6 +41,14 @@ export default {
     },
     people() {
       return this.$store.state.people;
+    },
+    registerIsVisible() {
+      return this.$store.state.registerIsVisible;
+    },
+  },
+  methods: {
+    showRegisterForm() {
+      this.$store.dispatch("showRegisterForm");
     },
   },
 };

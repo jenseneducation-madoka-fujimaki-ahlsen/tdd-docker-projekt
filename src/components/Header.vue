@@ -35,10 +35,7 @@ export default {
     Login,
     Register,
   },
-  data: () => ({
-    // loginIsVisible: false,
-    // registerIsVisible: false,
-  }),
+  data: () => ({}),
   computed: {
     loginIsVisible() {
       return this.$store.state.loginIsVisible;
@@ -50,26 +47,12 @@ export default {
   methods: {
     showLoginForm() {
       this.$store.dispatch("showLoginForm");
-      // if (this.loginIsVisible == false) {
-      //   this.registerIsVisible = false;
-      //   this.loginIsVisible = true;
-      // } else {
-      //   this.loginIsVisible = false;
-      // }
     },
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
-      // if (this.registerIsVisible == false) {
-      //   this.registerIsVisible = true;
-      //   this.loginIsVisible = false;
-      // } else {
-      //   this.registerIsVisible = false;
-      // }
     },
     hideForm() {
       this.$store.dispatch("hideForm");
-      // this.registerIsVisible = false;
-      // this.loginIsVisible = false;
     },
   },
 };
