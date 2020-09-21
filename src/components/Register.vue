@@ -7,24 +7,40 @@
       <h2>Skapa ett konto</h2>
       <form>
         <input
+          v-model="email"
           class="mail"
           type="email"
           placeholder="E-postadress"
           required="required"
+          @keyup="checkForm()"
         />
         <input
+          v-model="userName"
           class="username"
           type="text"
           placeholder="Användarnamn"
           required="required"
+          @keyup="checkForm()"
         />
         <input
+          v-model="password"
           class="password"
           type="password"
           placeholder="Lösenord"
           required="required"
+          @keyup="checkForm()"
+          minlength="5"
         />
-        <button type="submit">
+        <p class="form-text">
+          innehåller minst 5 tecken
+        </p>
+
+        <button
+          type="button"
+          @click="register"
+          :disabled="!valid"
+          :class="{ 'not-valid': !valid }"
+        >
           Skapa konto
         </button>
       </form>
@@ -38,12 +54,43 @@
 
 <script>
 export default {
+  data: () => ({
+    email: "",
+    userName: "",
+    password: "",
+    valid: false,
+  }),
   methods: {
     showLoginForm() {
       this.$store.dispatch("showLoginForm");
     },
     hideModal() {
       this.$store.dispatch("hideModal");
+    },
+    checkForm() {
+      if (
+        this.userName !== "" &&
+        this.validPassword(this.password) &&
+        this.validEmail(this.email)
+      ) {
+        this.valid = true;
+      } else {
+        this.valid = false;
+      }
+    },
+    register() {
+      this.$store.dispatch("register");
+    },
+    validPassword: function(password) {
+      if (password.length >= 5) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    validEmail: function(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
   },
 };
@@ -96,12 +143,25 @@ export default {
       font-size: 16px;
     }
 
+    .form-text {
+      color: $light-gray;
+      margin: 0 auto 0 0;
+    }
+
     button {
       margin-top: 32px;
     }
 
     button:hover {
       border: 2px solid $pink;
+    }
+
+    .not-valid {
+      background: $light-gray;
+    }
+    .not-valid:hover {
+      border: none;
+      color: $white;
     }
   }
 

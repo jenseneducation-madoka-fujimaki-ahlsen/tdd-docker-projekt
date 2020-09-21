@@ -10,6 +10,7 @@ export default new Vuex.Store({
     loginFormIsVisible: false,
     registerFormIsVisible: false,
     eventDetailIsVisible: false,
+    register: false,
     loggedIn: false,
     selectedEventId: "",
   },
@@ -57,6 +58,9 @@ export default new Vuex.Store({
     login(state) {
       state.loggedIn == true;
     },
+    register(state) {
+      state.register == true;
+    },
   },
   actions: {
     getEvents(context) {
@@ -82,6 +86,9 @@ export default new Vuex.Store({
     },
     login(context) {
       context.commit("login");
+    },
+    register(context) {
+      context.commit("register");
     },
   },
   modules: {},

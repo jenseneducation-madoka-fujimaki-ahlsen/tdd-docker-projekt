@@ -22,11 +22,8 @@
           placeholder="Lösenord"
           required="required"
           @keyup="checkForm()"
-          minlength="5"
         />
-        <p class="password-text">
-          innehåller minst 5 tecken
-        </p>
+
         <button
           type="button"
           @click="login"
@@ -59,7 +56,11 @@ export default {
       this.$store.dispatch("hideModal");
     },
     checkForm() {
-      if (this.userName !== "" && this.validPassword(this.password)) {
+      if (
+        this.userName !== "" &&
+        this.password !== "" &&
+        this.password.length > 4
+      ) {
         this.valid = true;
       } else {
         this.valid = false;
@@ -67,13 +68,6 @@ export default {
     },
     login() {
       this.$store.dispatch("login");
-    },
-    validPassword: function(password) {
-      if (password.length >= 5) {
-        return true;
-      } else {
-        return false;
-      }
     },
   },
 };
@@ -122,10 +116,6 @@ export default {
       border: none;
       border-bottom: 1px solid $dark-gray;
       font-size: 16px;
-    }
-    .password-text {
-      color: $light-gray;
-      margin: 0 auto 0 0;
     }
 
     button {

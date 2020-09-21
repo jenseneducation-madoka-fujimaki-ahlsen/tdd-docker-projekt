@@ -1,32 +1,48 @@
-import { shallowMount, createLocalVue, RouterLinkStub } from "@vue/test-utils";
+import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
 import Register from "@/components/Register.vue";
-import VueRouter from "vue-router";
+import Vuex from "vuex";
 
 const localVue = createLocalVue();
-localVue.use(VueRouter);
-
-const router = new VueRouter();
+localVue.use(Vuex);
 
 describe("Register.vue", () => {
   let wrapper;
+  let store;
+  let storeOptions;
+  let event = {
+    id: 0,
+    title: "Höstens picknick",
+    place: "Vasaparken",
+    date: "2020-09-15",
+    image: "picnic.jpg",
+    description:
+      "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
+    host: "1.jpg",
+    participant: [],
+    reviews: [],
+  };
 
   beforeEach(() => {
-    wrapper = shallowMount(Register, {
-      localVue,
-      router,
+    storeOptions = {
+      actions: { register: jest.fn() },
+    };
+    store = new Vuex.Store(storeOptions);
 
-      stubs: {
-        RouterLink: RouterLinkStub,
-      },
+    wrapper = shallowMount(Register, {
+      data: () => ({
+        valid: true,
+      }),
+      localVue,
+      store,
     });
   });
 
-  it("should ", () => {
+  it("should calls store action 'register' when button 'Skapa konto' is clicked", () => {
     //Arrange
-    const expected = "";
+    let button = wrapper.find("button");
     //Act
-    let actual = "";
+    button.trigger("click");
     //Assert
-    expect(actual).toBe(expected);
+    expect(storeOptions.actions.register).toHaveBeenCalled();
   });
 });

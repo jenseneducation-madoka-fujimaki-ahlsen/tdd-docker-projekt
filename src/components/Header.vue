@@ -3,7 +3,6 @@
     <div
       class="overlay"
       v-if="loginFormIsVisible || registerFormIsVisible"
-      v-on:click="hideModal"
     ></div>
     <div class="header-wrap">
       <img
