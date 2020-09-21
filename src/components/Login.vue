@@ -19,7 +19,11 @@
           placeholder="Lösenord"
           required="required"
         />
-        <button type="submit">
+        <button
+          type="submit"
+          :disabled="checkForm()"
+          :class="{ 'not-valid': !valid }"
+        >
           Logga in
         </button>
       </form>
@@ -33,6 +37,9 @@
 
 <script>
 export default {
+  data: () => ({
+    valid: false,
+  }),
   methods: {
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
@@ -40,6 +47,7 @@ export default {
     hideModal() {
       this.$store.dispatch("hideModal");
     },
+    checkForm() {},
   },
 };
 </script>
@@ -95,6 +103,14 @@ export default {
 
     button:hover {
       border: 2px solid $pink;
+    }
+
+    .not-valid {
+      background: $light-gray;
+    }
+    .not-valid:hover {
+      border: none;
+      color: $white;
     }
   }
 

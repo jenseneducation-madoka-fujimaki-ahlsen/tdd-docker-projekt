@@ -10,7 +10,7 @@ export default new Vuex.Store({
     loginFormIsVisible: false,
     registerFormIsVisible: false,
     eventDetailIsVisible: false,
-    login: false,
+    loggedIn: false,
     selectedEventId: "",
   },
   mutations: {
@@ -42,7 +42,7 @@ export default new Vuex.Store({
       state.eventDetailIsVisible = false;
     },
     checkLogin(state, id) {
-      if (state.login == true) {
+      if (state.loggedIn == true) {
         state.loginFormIsVisible = false;
       } else {
         state.loginFormIsVisible = true;
