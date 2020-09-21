@@ -15,7 +15,7 @@
           deltagare: {{ event.participant.length }} personer
         </p>
       </div>
-      <button class="join-button">
+      <button class="join-button" @click="checkLogin">
         Delta
       </button>
     </div>
@@ -25,6 +25,11 @@
 <script>
 export default {
   props: ["event"],
+  methods: {
+    checkLogin() {
+      this.$store.dispatch("checkLogin");
+    },
+  },
 };
 </script>
 

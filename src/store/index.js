@@ -38,6 +38,13 @@ export default new Vuex.Store({
       state.registerFormIsVisible = false;
       state.loginFormIsVisible = false;
     },
+    checkLogin(state) {
+      if (state.login == true) {
+        state.loginFormIsVisible = false;
+      } else {
+        state.loginFormIsVisible = true;
+      }
+    },
   },
   actions: {
     getEvents(context) {
@@ -54,6 +61,9 @@ export default new Vuex.Store({
     },
     hideForm(context) {
       context.commit("hideForm");
+    },
+    checkLogin(context) {
+      context.commit("checkLogin");
     },
   },
   modules: {},

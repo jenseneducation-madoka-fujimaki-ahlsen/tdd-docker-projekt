@@ -25,6 +25,7 @@ describe("Event.vue", () => {
   beforeEach(() => {
     storeOptions = {
       state: { login: false, loginFormIsVisible: false },
+      actions: { checkLogin: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
 
@@ -35,16 +36,24 @@ describe("Event.vue", () => {
     });
   });
 
-  it("should show login form when button 'Delta' is clicked of users who are not logged in", () => {
+  it("should calls store action 'checkLogin' when button 'Delta' is clicked", () => {
     //Arrange
-    const expected = true;
     let button = wrapper.find("button");
-
     //Act
     button.trigger("click");
-    let actual = storeOptions.state.loginFormIsVisible;
-
     //Assert
-    expect(actual).toBe(expected);
+    expect(storeOptions.actions.checkLogin).toHaveBeenCalled();
   });
+
+  //   it("should show login form when button 'Delta' is clicked of users who are not logged in", () => {
+  //     //Arrange
+  //     const expected = true;
+  //     let button = wrapper.find("button");
+  //     //Act
+  //     expect(storeOptions.state.login).toBe(false);
+  //     button.trigger("click");
+  //     let actual = storeOptions.state.loginFormIsVisible;
+  //     //Assert
+  //     expect(actual).toBe(expected);
+  //   });
 });
