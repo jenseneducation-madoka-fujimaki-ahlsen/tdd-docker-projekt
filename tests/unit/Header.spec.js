@@ -25,8 +25,8 @@ describe("Header.vue", () => {
   beforeEach(() => {
     storeOptions = {
       state: {
-        loginIsVisible: true,
-        registerIsVisible: true,
+        loginFormIsVisible: true,
+        registerFormIsVisible: true,
       },
       actions: {
         showLoginForm: jest.fn(),
@@ -67,7 +67,7 @@ describe("Header.vue", () => {
     expect(storeOptions.actions.showRegisterForm).toHaveBeenCalled();
   });
 
-  it("should appear login form when 'loginIsVisible' is true", async () => {
+  it("should appear login form when 'loginFormIsVisible' is true", async () => {
     //Arrange
     const expected = true;
 
@@ -78,7 +78,7 @@ describe("Header.vue", () => {
     expect(actual).toBe(expected);
   });
 
-  it("should appear register form when 'registerIsVisible' is true", async () => {
+  it("should appear register form when 'registerFormIsVisible' is true", async () => {
     //Arrange
     const expected = true;
 

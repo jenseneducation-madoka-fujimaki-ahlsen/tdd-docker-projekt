@@ -18,6 +18,7 @@ describe("Home.vue", () => {
       title: "Höstens picknick",
       place: "Vasaparken",
       date: "2020-09-15",
+      image: "picnic.jpg",
       description:
         "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
       host: "Madoka",
@@ -29,6 +30,7 @@ describe("Home.vue", () => {
       title: "Löpning och avslappnad middag",
       place: "Farsta",
       date: "2020-10-01",
+      image: "run.jpg",
       description:
         "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu.",
       host: "Madoka",

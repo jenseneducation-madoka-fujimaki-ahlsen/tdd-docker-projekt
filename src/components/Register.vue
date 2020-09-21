@@ -1,6 +1,9 @@
 <template>
   <div id="register">
     <div class="register-wrap">
+      <a class="close-wrap">
+        <img src="@/assets/close.svg" v-on:click="hideForm" alt="" />
+      </a>
       <h2>Skapa ett konto</h2>
       <form>
         <input
@@ -39,6 +42,9 @@ export default {
     showLoginForm() {
       this.$store.dispatch("showLoginForm");
     },
+    hideForm() {
+      this.$store.dispatch("hideForm");
+    },
   },
 };
 </script>
@@ -59,10 +65,16 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  .close-wrap {
+    width: 40px;
+    align-self: flex-end;
+    margin: 16px 16px 0 auto;
+  }
+
   h2 {
     color: $dark-gray;
     font-size: 2rem;
-    margin: 48px 0;
+    margin: 24px 0 48px;
   }
 
   form {
@@ -76,7 +88,7 @@ export default {
       margin: 8px 0;
       padding: 0 8px;
       border: none;
-      border-bottom: 2px solid $dark-gray;
+      border-bottom: 1px solid $dark-gray;
       font-size: 16px;
     }
 

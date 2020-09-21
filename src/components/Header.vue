@@ -2,7 +2,7 @@
   <div id="header">
     <div
       class="overlay"
-      v-if="loginIsVisible || registerIsVisible"
+      v-if="loginFormIsVisible || registerFormIsVisible"
       v-on:click="hideForm"
     ></div>
     <div class="header-wrap">
@@ -21,8 +21,8 @@
         </a>
       </div>
     </div>
-    <Login v-if="loginIsVisible" />
-    <Register v-if="registerIsVisible" />
+    <Login v-if="loginFormIsVisible" />
+    <Register v-if="registerFormIsVisible" />
   </div>
 </template>
 
@@ -37,11 +37,11 @@ export default {
   },
   data: () => ({}),
   computed: {
-    loginIsVisible() {
-      return this.$store.state.loginIsVisible;
+    loginFormIsVisible() {
+      return this.$store.state.loginFormIsVisible;
     },
-    registerIsVisible() {
-      return this.$store.state.registerIsVisible;
+    registerFormIsVisible() {
+      return this.$store.state.registerFormIsVisible;
     },
   },
   methods: {

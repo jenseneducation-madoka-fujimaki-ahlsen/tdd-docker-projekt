@@ -1,6 +1,10 @@
 <template>
   <div id="login">
     <div class="login-wrap">
+      <a class="close-wrap">
+        <img src="@/assets/close.svg" v-on:click="hideForm" alt="" />
+      </a>
+
       <h2>Logga in</h2>
       <form>
         <input
@@ -12,7 +16,7 @@
         <input
           class="password"
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
           required="required"
         />
         <button type="submit">
@@ -32,6 +36,9 @@ export default {
   methods: {
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
+    },
+    hideForm() {
+      this.$store.dispatch("hideForm");
     },
   },
 };
@@ -53,10 +60,16 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  .close-wrap {
+    width: 40px;
+    align-self: flex-end;
+    margin: 16px 16px 0 auto;
+  }
+
   h2 {
     color: $dark-gray;
     font-size: 2rem;
-    margin: 48px 0;
+    margin: 24px 0 48px;
   }
 
   form {
@@ -70,7 +83,7 @@ export default {
       margin: 8px 0;
       padding: 0 8px;
       border: none;
-      border-bottom: 2px solid $dark-gray;
+      border-bottom: 1px solid $dark-gray;
       font-size: 16px;
     }
 

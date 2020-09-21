@@ -7,8 +7,9 @@ export default new Vuex.Store({
   state: {
     events: [],
     people: [],
-    loginIsVisible: false,
-    registerIsVisible: false,
+    loginFormIsVisible: false,
+    registerFormIsVisible: false,
+    login: false,
   },
   mutations: {
     getEvents(state) {
@@ -18,24 +19,24 @@ export default new Vuex.Store({
       state.people = JSON.parse(localStorage.getItem("viewlist-people"));
     },
     showLoginForm(state) {
-      if (state.loginIsVisible == false) {
-        state.registerIsVisible = false;
-        state.loginIsVisible = true;
+      if (state.loginFormIsVisible == false) {
+        state.registerFormIsVisible = false;
+        state.loginFormIsVisible = true;
       } else {
-        state.loginIsVisible = false;
+        state.loginFormIsVisible = false;
       }
     },
     showRegisterForm(state) {
-      if (state.registerIsVisible == false) {
-        state.registerIsVisible = true;
-        state.loginIsVisible = false;
+      if (state.registerFormIsVisible == false) {
+        state.registerFormIsVisible = true;
+        state.loginFormIsVisible = false;
       } else {
-        state.registerIsVisible = false;
+        state.registerFormIsVisible = false;
       }
     },
     hideForm(state) {
-      state.registerIsVisible = false;
-      state.loginIsVisible = false;
+      state.registerFormIsVisible = false;
+      state.loginFormIsVisible = false;
     },
   },
   actions: {
