@@ -27,6 +27,7 @@ describe("Header.vue", () => {
       state: {
         loginFormIsVisible: true,
         registerFormIsVisible: true,
+        loggedIn: true,
       },
       actions: {
         showLoginForm: jest.fn(),
@@ -87,6 +88,15 @@ describe("Header.vue", () => {
     let actual = childComponent.find("#register").exists();
     //Assert
     expect(actual).toBe(expected);
+  });
+
+  it("should not display link 'Logga in' when logged in", async () => {
+    //Arrange
+    const expected = "display: none;";
+    //Act
+    let actual = wrapper.find(".login-button");
+    //Assert
+    expect(actual.attributes().style).toBe(expected);
   });
 
   // before use vuex

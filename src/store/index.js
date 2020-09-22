@@ -13,6 +13,7 @@ export default new Vuex.Store({
     register: false,
     loggedIn: false,
     selectedEventId: "",
+    error: "",
   },
   mutations: {
     getEvents(state) {
@@ -56,10 +57,22 @@ export default new Vuex.Store({
       state.selectedEventId = id;
     },
     login(state) {
-      state.loggedIn == true;
+      state.loginFormIsVisible = false;
+      state.loggedIn = true;
+      setTimeout(myTimer, 200);
+      function myTimer() {
+        alert("Du är inloggad");
+      }
     },
     register(state) {
       state.register == true;
+    },
+    logOut(state) {
+      state.loggedIn = false;
+      setTimeout(myTimer, 200);
+      function myTimer() {
+        alert("Du har loggat ut");
+      }
     },
   },
   actions: {
@@ -84,11 +97,24 @@ export default new Vuex.Store({
     showEventDetail(context, id) {
       context.commit("showEventDetail", id);
     },
-    login(context) {
-      context.commit("login");
+    login(context, user) {
+      if (
+        this.state.people.find(
+          (person) =>
+            person.name == user.userName && person.password == user.password
+        )
+      ) {
+        this.state.error = "";
+        context.commit("login");
+      } else {
+        this.state.error = "Kontrollera din information";
+      }
     },
     register(context) {
       context.commit("register");
+    },
+    logOut(context) {
+      context.commit("logOut");
     },
   },
   modules: {},

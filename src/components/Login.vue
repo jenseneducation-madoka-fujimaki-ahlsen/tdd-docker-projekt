@@ -23,10 +23,11 @@
           required="required"
           @keyup="checkForm()"
         />
+        <p class="error">{{ error }}</p>
 
         <button
           type="button"
-          @click="login"
+          @click="login(userName, password)"
           :disabled="!valid"
           :class="{ 'not-valid': !valid }"
         >
@@ -48,6 +49,14 @@ export default {
     password: "",
     valid: false,
   }),
+  computed: {
+    error() {
+      return this.$store.state.error;
+    },
+    loggedIn() {
+      return this.$store.state.loggedIn;
+    },
+  },
   methods: {
     showRegisterForm() {
       this.$store.dispatch("showRegisterForm");
@@ -66,8 +75,12 @@ export default {
         this.valid = false;
       }
     },
-    login() {
-      this.$store.dispatch("login");
+    async login(userName, password) {
+      let user = {
+        userName: userName,
+        password: password,
+      };
+      await this.$store.dispatch("login", user);
     },
   },
 };
@@ -116,6 +129,11 @@ export default {
       border: none;
       border-bottom: 1px solid $dark-gray;
       font-size: 16px;
+    }
+
+    .error {
+      color: $pink;
+      margin: 0 auto 0 0;
     }
 
     button {

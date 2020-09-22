@@ -56,7 +56,7 @@ describe("Home.vue", () => {
 
   beforeEach(() => {
     const storeOptions = {
-      state: { events: data.events, people: data.people },
+      state: { events: data.events, people: data.people, loggedIn: true },
       actions: { getEvents: jest.fn(), getPeople: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
@@ -89,5 +89,15 @@ describe("Home.vue", () => {
     let actual = wrapper.vm.validEvents.length;
     //Assert
     expect(actual).toBe(expected);
+  });
+
+  it("should not display hero when logged in", async () => {
+    //Arrange
+    const expected = "display: none;";
+    //Act
+    let actual = wrapper.find(".hero");
+
+    //Assert
+    expect(actual.attributes().style).toBe(expected);
   });
 });
