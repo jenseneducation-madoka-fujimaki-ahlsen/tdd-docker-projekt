@@ -18,8 +18,11 @@
         </div>
       </div>
     </div>
-    <button class="join-button" @click="checkLogin">
+    <button v-if="!joinEvent" class="join-button" @click="joinThisEvent">
       Delta
+    </button>
+    <button v-if="joinEvent" class="remove-button" @click="removeThisEvent">
+      Ta bort
     </button>
     <EventDetail
       v-show="eventDetailIsVisible == true && selectedEventId == event.id"
@@ -35,6 +38,7 @@ export default {
     EventDetail,
   },
   props: ["event"],
+  data: () => ({}),
   computed: {
     eventDetailIsVisible() {
       return this.$store.state.eventDetailIsVisible;
@@ -42,11 +46,24 @@ export default {
     selectedEventId() {
       return this.$store.state.selectedEventId;
     },
+    loginUser() {
+      return this.$store.state.loginUser;
+    },
+    loggedIn() {
+      return this.$store.state.loggedIn;
+    },
+    joinEvent() {
+      return this.event.participant.find((p) => p == this.loginUser.image);
+    },
   },
   methods: {
-    checkLogin() {
+    joinThisEvent() {
       this.$store.dispatch("checkLogin");
+      if (this.loggedIn === true) {
+        this.$store.dispatch("joinThisEvent", this.event.id);
+      }
     },
+    removeThisEvent() {},
     showEventDetail(id) {
       this.$store.dispatch("showEventDetail", id);
     },
@@ -126,6 +143,15 @@ button {
   position: absolute;
 
   margin: 320px 8px 8px 230px;
+}
+
+.remove-button {
+  background: $light-gray;
+}
+
+.remove-button:hover {
+  background: $white;
+  color: $dark-gray;
 }
 
 #event:hover {
