@@ -9,10 +9,26 @@
       <img class="line" src="@/assets/line.png" alt="" />
       <button v-on:click="showRegisterForm">Bli medlem</button>
     </section>
-    <div class="upcoming-events" :class="{ loggedIn: loggedIn }">
-      <h3>Kommande evenemang</h3>
+    <div v-show="!loggedIn" class="upcoming-events">
+      <h3>Alla kommande evenemang</h3>
       <EventList v-bind:events="validEvents" />
     </div>
+    <div v-show="loggedIn" class="event-wrap">
+      <div class="eventTab">
+        <a
+          v-for="(tab, index) in tabList"
+          :key="index"
+          @click="currentTab = index"
+          :class="{ active: currentTab === index }"
+        >
+          {{ tab }}
+        </a>
+      </div>
+      <EventList v-if="currentTab === 0" v-bind:events="validEvents" />
+      <EventList v-if="currentTab === 1" v-bind:events="joinEvents" />
+      <EventList v-if="currentTab === 2" v-bind:events="joinedEvents" />
+    </div>
+
     <Footer />
   </div>
 </template>
@@ -29,12 +45,31 @@ export default {
     EventList,
     Footer,
   },
-  data: () => ({}),
+  data: () => ({
+    currentTab: 0,
+    tabList: [
+      "Alla kommande evenemang",
+      "Evenemang du planerar att delta",
+      "Evenemang du deltog",
+    ],
+  }),
   created() {
     this.$store.dispatch("getEvents");
     this.$store.dispatch("getPeople");
   },
   computed: {
+    people() {
+      return this.$store.state.people;
+    },
+    registerIsVisible() {
+      return this.$store.state.registerIsVisible;
+    },
+    loggedIn() {
+      return this.$store.state.loggedIn;
+    },
+    loginUser() {
+      return this.$store.state.loginUser;
+    },
     events() {
       return this.$store.state.events;
     },
@@ -49,14 +84,25 @@ export default {
       );
       return result;
     },
-    people() {
-      return this.$store.state.people;
+    joinEvents() {
+      let result = this.validEvents.filter((event) =>
+        event.participant.some((p) => p.includes(this.loginUser.image))
+      );
+      return result;
     },
-    registerIsVisible() {
-      return this.$store.state.registerIsVisible;
-    },
-    loggedIn() {
-      return this.$store.state.loggedIn;
+    joinedEvents() {
+      let currentTime = new Date();
+      let month = currentTime.getMonth() + 1;
+      let day = currentTime.getDate();
+      let year = currentTime.getFullYear();
+      let today = year + "-" + month + "-" + day;
+      let result = this.events.filter(
+        (event) => Date.parse(event.date) < Date.parse(today)
+      );
+      result = result.filter((event) =>
+        event.participant.some((p) => p.includes(this.loginUser.image))
+      );
+      return result;
     },
   },
   methods: {
@@ -143,8 +189,28 @@ export default {
     }
   }
 
-  .loggedIn {
-    margin-top: 40px;
+  .event-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 48px;
+
+    .eventTab {
+      display: flex;
+      justify-content: center;
+
+      a {
+        margin: 0 24px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .active {
+        color: $pink;
+        border-bottom: solid $pink 1px;
+      }
+    }
   }
 }
 </style>
