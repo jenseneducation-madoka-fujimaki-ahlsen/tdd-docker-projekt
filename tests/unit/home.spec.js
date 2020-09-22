@@ -100,4 +100,14 @@ describe("Home.vue", () => {
     //Assert
     expect(actual.attributes().style).toBe(expected);
   });
+
+  it("should display eventTab when logged in", async () => {
+    //Arrange
+    const expected = true;
+    //Act
+    let actual = wrapper.find(".eventTab");
+
+    //Assert
+    expect(actual.exists()).toBe(expected);
+  });
 });
