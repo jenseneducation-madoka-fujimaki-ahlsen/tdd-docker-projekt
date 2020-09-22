@@ -17,7 +17,7 @@ describe("Event.vue", () => {
     image: "picnic.jpg",
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
-    host: "Madoka",
+    host: "1.jpg",
     participant: [],
     reviews: [],
   };

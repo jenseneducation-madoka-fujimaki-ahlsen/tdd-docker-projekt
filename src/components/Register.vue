@@ -60,6 +60,11 @@ export default {
     password: "",
     valid: false,
   }),
+  computed: {
+    people() {
+      return this.$store.state.people;
+    },
+  },
   methods: {
     showLoginForm() {
       this.$store.dispatch("showLoginForm");
@@ -79,7 +84,16 @@ export default {
       }
     },
     register() {
-      this.$store.dispatch("register");
+      let newUser = {
+        id: this.people.length,
+        name: this.userName,
+        email: this.email,
+        password: this.password,
+        image: "0.jpg",
+        participate: [],
+        participated: [],
+      };
+      this.$store.dispatch("register", newUser);
     },
     validPassword: function(password) {
       if (password.length >= 5) {

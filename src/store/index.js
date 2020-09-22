@@ -10,7 +10,6 @@ export default new Vuex.Store({
     loginFormIsVisible: false,
     registerFormIsVisible: false,
     eventDetailIsVisible: false,
-    register: false,
     loggedIn: false,
     selectedEventId: "",
     error: "",
@@ -65,7 +64,13 @@ export default new Vuex.Store({
       }
     },
     register(state) {
-      state.register == true;
+      state.registerFormIsVisible = false;
+      state.loggedIn = true;
+      state.people = JSON.parse(localStorage.getItem("viewlist-people"));
+      setTimeout(myTimer, 200);
+      function myTimer() {
+        alert("Du har blivit medlem!");
+      }
     },
     logOut(state) {
       state.loggedIn = false;
@@ -110,7 +115,10 @@ export default new Vuex.Store({
         this.state.error = "Kontrollera din information";
       }
     },
-    register(context) {
+    register(context, newUser) {
+      const LS_KEY = "viewlist-people";
+      this.state.people.push(newUser);
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.people));
       context.commit("register");
     },
     logOut(context) {

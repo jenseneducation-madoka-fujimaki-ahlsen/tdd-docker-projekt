@@ -9,21 +9,24 @@ describe("Register.vue", () => {
   let wrapper;
   let store;
   let storeOptions;
-  let event = {
-    id: 0,
-    title: "Höstens picknick",
-    place: "Vasaparken",
-    date: "2020-09-15",
-    image: "picnic.jpg",
-    description:
-      "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
-    host: "1.jpg",
-    participant: [],
-    reviews: [],
-  };
+  let people = [
+    {
+      id: 0,
+      name: "Madoka",
+      participate: [],
+      participated: [],
+    },
+    {
+      id: 1,
+      name: "Christian",
+      participate: [],
+      participated: [],
+    },
+  ];
 
   beforeEach(() => {
     storeOptions = {
+      state: { people: people },
       actions: { register: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);
