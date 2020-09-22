@@ -28,6 +28,13 @@ describe("Header.vue", () => {
         loginFormIsVisible: true,
         registerFormIsVisible: true,
         loggedIn: true,
+        loginUser: {
+          id: 0,
+          name: "Madoka",
+          image: "1.jpg",
+          participate: [],
+          participated: [],
+        },
       },
       actions: {
         showLoginForm: jest.fn(),

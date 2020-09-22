@@ -11,6 +11,7 @@ export default new Vuex.Store({
     registerFormIsVisible: false,
     eventDetailIsVisible: false,
     loggedIn: false,
+    loginUser: {},
     selectedEventId: "",
     error: "",
   },
@@ -51,13 +52,20 @@ export default new Vuex.Store({
       }
       state.joinEventId = id;
     },
+    joinEvent() {
+      setTimeout(myTimer, 200);
+      function myTimer() {
+        alert("Du har sparat evenemanget");
+      }
+    },
     showEventDetail(state, id) {
       state.eventDetailIsVisible = true;
       state.selectedEventId = id;
     },
-    login(state) {
+    login(state, loginUser) {
       state.loginFormIsVisible = false;
       state.loggedIn = true;
+      state.loginUser = loginUser;
       setTimeout(myTimer, 200);
       function myTimer() {
         alert("Du är inloggad");
@@ -99,6 +107,14 @@ export default new Vuex.Store({
     checkLogin(context, id) {
       context.commit("checkLogin", id);
     },
+    joinEvent(context, id) {
+      const LS_KEY = "viewlist-events";
+      this.state.events
+        .find((e) => e.id == id)
+        .participant.push(this.state.loginUser.image);
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("joinEvent");
+    },
     showEventDetail(context, id) {
       context.commit("showEventDetail", id);
     },
@@ -110,7 +126,11 @@ export default new Vuex.Store({
         )
       ) {
         this.state.error = "";
-        context.commit("login");
+        let loginUser = this.state.people.filter(
+          (person) =>
+            person.name == user.userName && person.password == user.password
+        );
+        context.commit("login", loginUser[0]);
       } else {
         this.state.error = "Kontrollera din information";
       }

@@ -22,9 +22,14 @@
         >
           Bli medlem
         </a>
-        <a v-on:click="logOut" class="log-out-button" v-show="loggedIn">
-          Logga ut
-        </a>
+        <div class="afterLogin" v-if="loggedIn">
+          <a v-on:click="logOut" class="log-out-button">
+            Logga ut
+          </a>
+          <div class="userImage">
+            <img :src="require(`@/assets/${loginUser.image}`)" alt="" />
+          </div>
+        </div>
       </div>
     </div>
     <Login v-if="loginFormIsVisible" />
@@ -51,6 +56,9 @@ export default {
     },
     loggedIn() {
       return this.$store.state.loggedIn;
+    },
+    loginUser() {
+      return this.$store.state.loginUser;
     },
   },
   methods: {
@@ -112,6 +120,25 @@ export default {
   }
   a:hover {
     color: $green;
+  }
+
+  .afterLogin {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    .userImage {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-right: -16px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+      }
+    }
   }
 }
 </style>
