@@ -81,4 +81,13 @@ describe("Home.vue", () => {
     //Assert
     expect(actual).toBe(expected);
   });
+
+  it("should be displayed only events with valid dates", () => {
+    //Arrange
+    const expected = 1;
+    //Act
+    let actual = wrapper.vm.validEvents.length;
+    //Assert
+    expect(actual).toBe(expected);
+  });
 });
