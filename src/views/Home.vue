@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Header />
-    <section class="hero">
+    <section class="hero" v-show="!loggedIn">
       <p>Hitta likasinnade vänner med meetapp!</p>
       <div class="img-wrap">
         <img src="@/assets/people.jpg" alt="" />
@@ -9,7 +9,7 @@
       <img class="line" src="@/assets/line.png" alt="" />
       <button v-on:click="showRegisterForm">Bli medlem</button>
     </section>
-    <div class="upcoming-events">
+    <div class="upcoming-events" :class="{ loggedIn: loggedIn }">
       <h3>Kommande evenemang</h3>
       <EventList v-bind:events="validEvents" />
     </div>
@@ -54,6 +54,9 @@ export default {
     },
     registerIsVisible() {
       return this.$store.state.registerIsVisible;
+    },
+    loggedIn() {
+      return this.$store.state.loggedIn;
     },
   },
   methods: {
@@ -138,6 +141,10 @@ export default {
     h3 {
       font-size: 32px;
     }
+  }
+
+  .loggedIn {
+    margin-top: 40px;
   }
 }
 </style>

@@ -12,11 +12,18 @@
         src="@/assets/logo.svg"
       />
       <div class="nav">
-        <a v-on:click="showLoginForm" class="login-button">
+        <a v-on:click="showLoginForm" class="login-button" v-show="!loggedIn">
           Logga in
         </a>
-        <a v-on:click="showRegisterForm" class="register-button">
+        <a
+          v-on:click="showRegisterForm"
+          class="register-button"
+          v-show="!loggedIn"
+        >
           Bli medlem
+        </a>
+        <a v-on:click="logOut" class="log-out-button" v-show="loggedIn">
+          Logga ut
         </a>
       </div>
     </div>
@@ -42,6 +49,9 @@ export default {
     registerFormIsVisible() {
       return this.$store.state.registerFormIsVisible;
     },
+    loggedIn() {
+      return this.$store.state.loggedIn;
+    },
   },
   methods: {
     showLoginForm() {
@@ -52,6 +62,9 @@ export default {
     },
     hideModal() {
       this.$store.dispatch("hideModal");
+    },
+    logOut() {
+      this.$store.dispatch("logOut");
     },
   },
 };
