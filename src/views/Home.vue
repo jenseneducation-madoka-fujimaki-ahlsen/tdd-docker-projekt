@@ -11,7 +11,7 @@
     </section>
     <div class="upcoming-events">
       <h3>Kommande evenemang</h3>
-      <EventList v-bind:events="events" />
+      <EventList v-bind:events="validEvents" />
     </div>
     <Footer />
   </div>
@@ -37,6 +37,17 @@ export default {
   computed: {
     events() {
       return this.$store.state.events;
+    },
+    validEvents() {
+      let currentTime = new Date();
+      let month = currentTime.getMonth() + 1;
+      let day = currentTime.getDate();
+      let year = currentTime.getFullYear();
+      let today = year + "-" + month + "-" + day;
+      const result = this.events.filter(
+        (event) => Date.parse(event.date) > Date.parse(today)
+      );
+      return result;
     },
     people() {
       return this.$store.state.people;
