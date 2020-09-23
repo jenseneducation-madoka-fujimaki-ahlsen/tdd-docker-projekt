@@ -18,11 +18,15 @@
         </div>
       </div>
     </div>
-    <button v-if="!joinEvent" class="join-button" @click="joinThisEvent">
-      Delta
-    </button>
-    <button v-if="joinEvent" class="remove-button" @click="removeThisEvent">
+    <button
+      v-if="joinEvent && loggedIn"
+      class="remove-button"
+      @click="removeThisEvent"
+    >
       Ta bort
+    </button>
+    <button v-else class="join-button" @click="joinThisEvent">
+      Delta
     </button>
     <EventDetail
       v-show="eventDetailIsVisible == true && selectedEventId == event.id"
@@ -63,7 +67,9 @@ export default {
         this.$store.dispatch("joinThisEvent", this.event.id);
       }
     },
-    removeThisEvent() {},
+    removeThisEvent() {
+      this.$store.dispatch("removeThisEvent", this.event.id);
+    },
     showEventDetail(id) {
       this.$store.dispatch("showEventDetail", id);
     },
@@ -80,6 +86,7 @@ export default {
 
 .event-wrap {
   border: solid 2px $pink;
+  // max-width: 320px;
   height: 360px;
   text-align: left;
   margin: 16px;

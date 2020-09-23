@@ -51,7 +51,7 @@ const events = [
     id: 0,
     title: "Höstens picknick",
     place: "Vasaparken",
-    date: "2020-09-22",
+    date: "2020-09-21",
     image: "picnic.jpg",
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",

@@ -194,10 +194,12 @@ export default {
     justify-content: center;
     flex-direction: column;
     margin-top: 48px;
+    margin-bottom: 60px;
 
     .eventTab {
       display: flex;
       justify-content: center;
+      margin: 24px 0;
 
       a {
         margin: 0 24px;

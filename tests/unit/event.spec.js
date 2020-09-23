@@ -33,7 +33,11 @@ describe("Event.vue", () => {
   beforeEach(() => {
     storeOptions = {
       state: { login: false, loginFormIsVisible: false, loginUser: {} },
-      actions: { checkLogin: jest.fn(), showEventDetail: jest.fn() },
+      actions: {
+        checkLogin: jest.fn(),
+        showEventDetail: jest.fn(),
+        removeThisEvent: jest.fn(),
+      },
     };
     store = new Vuex.Store(storeOptions);
 
@@ -67,7 +71,11 @@ describe("Event.vue", () => {
     const expected = true;
     storeOptions = {
       state: { login: false, loginFormIsVisible: false, loginUser: user },
-      actions: { checkLogin: jest.fn(), showEventDetail: jest.fn() },
+      actions: {
+        checkLogin: jest.fn(),
+        showEventDetail: jest.fn(),
+        removeThisEvent: jest.fn(),
+      },
     };
     store = new Vuex.Store(storeOptions);
     wrapper = shallowMount(Event, {
@@ -81,6 +89,15 @@ describe("Event.vue", () => {
 
     //Assert
     expect(actual.exists()).toBe(expected);
+  });
+
+  it("should calls store action 'removeThisEvent' when button 'Ta bort' is clicked", () => {
+    //Arrange
+    let button = wrapper.find(".remove-button");
+    //Act
+    button.trigger("click");
+    //Assert
+    expect(storeOptions.actions.removeThisEvent).toHaveBeenCalled();
   });
 
   //   it("should show login form when button 'Delta' is clicked of users who are not logged in", () => {

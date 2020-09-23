@@ -52,10 +52,16 @@ export default new Vuex.Store({
       }
       state.joinEventId = id;
     },
-    joinEvent() {
+    joinThisEvent() {
       setTimeout(myTimer, 200);
       function myTimer() {
         alert("Du har sparat evenemanget");
+      }
+    },
+    removeThisEvent() {
+      setTimeout(myTimer, 200);
+      function myTimer() {
+        alert("Du tagit bort evenemanget");
       }
     },
     showEventDetail(state, id) {
@@ -71,10 +77,11 @@ export default new Vuex.Store({
         alert("Du är inloggad");
       }
     },
-    register(state) {
+    register(state, newUser) {
       state.registerFormIsVisible = false;
       state.loggedIn = true;
       state.people = JSON.parse(localStorage.getItem("viewlist-people"));
+      state.loginUser = newUser;
       setTimeout(myTimer, 200);
       function myTimer() {
         alert("Du har blivit medlem!");
@@ -107,13 +114,26 @@ export default new Vuex.Store({
     checkLogin(context, id) {
       context.commit("checkLogin", id);
     },
-    joinEvent(context, id) {
+    joinThisEvent(context, id) {
       const LS_KEY = "viewlist-events";
       this.state.events
         .find((e) => e.id == id)
         .participant.push(this.state.loginUser.image);
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
-      context.commit("joinEvent");
+      context.commit("joinThisEvent");
+    },
+    removeThisEvent(context, id) {
+      const LS_KEY = "viewlist-events";
+      this.state.events
+        .find((e) => e.id == id)
+        .participant.splice(
+          this.state.events
+            .find((e) => e.id == id)
+            .participant.findIndex((e) => e === this.state.loginUser.image),
+          1
+        );
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("removeThisEvent");
     },
     showEventDetail(context, id) {
       context.commit("showEventDetail", id);
@@ -139,7 +159,7 @@ export default new Vuex.Store({
       const LS_KEY = "viewlist-people";
       this.state.people.push(newUser);
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.people));
-      context.commit("register");
+      context.commit("register", newUser);
     },
     logOut(context) {
       context.commit("logOut");
