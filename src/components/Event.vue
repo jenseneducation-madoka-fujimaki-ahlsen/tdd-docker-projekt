@@ -19,18 +19,19 @@
       </div>
     </div>
     <button
-      v-if="joinEvent && loggedIn"
+      v-if="joinEvent && loggedIn && !oldEvents"
       class="remove-button"
       @click="removeThisEvent"
     >
       Ta bort
     </button>
-    <button v-else class="join-button" @click="joinThisEvent">
+    <button v-else-if="!oldEvents" class="join-button" @click="joinThisEvent">
       Delta
     </button>
     <EventDetail
       v-show="eventDetailIsVisible == true && selectedEventId == event.id"
       v-bind:event="event"
+      v-bind:oldEvents="oldEvents"
     />
   </div>
 </template>
@@ -41,7 +42,7 @@ export default {
   components: {
     EventDetail,
   },
-  props: ["event"],
+  props: ["event", "oldEvents"],
   data: () => ({}),
   computed: {
     eventDetailIsVisible() {

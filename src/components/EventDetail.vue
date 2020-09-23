@@ -37,13 +37,17 @@
               <img :src="require(`@/assets/${participant}`)" />
             </div>
             <button
-              v-if="joinEvent && loggedIn"
+              v-if="joinEvent && loggedIn && !oldEvents"
               class="remove-button"
               @click="removeThisEvent"
             >
               Ta bort
             </button>
-            <button v-else class="join-button" @click="joinThisEvent">
+            <button
+              v-else-if="!oldEvents"
+              class="join-button"
+              @click="joinThisEvent"
+            >
               Delta
             </button>
           </div>
@@ -58,7 +62,7 @@
 
 <script>
 export default {
-  props: ["event"],
+  props: ["event", "oldEvents"],
   computed: {
     loggedIn() {
       return this.$store.state.loggedIn;

@@ -26,7 +26,11 @@
       </div>
       <EventList v-if="currentTab === 0" v-bind:events="validEvents" />
       <EventList v-if="currentTab === 1" v-bind:events="joinEvents" />
-      <EventList v-if="currentTab === 2" v-bind:events="joinedEvents" />
+      <EventList
+        v-if="currentTab === 2"
+        v-bind:events="joinedEvents"
+        v-bind:oldEvents="(oldEvents = true)"
+      />
       <p class="text" v-show="currentTab === 1 && joinEvents.length === 0">
         Det finns inga evenemang att delta
       </p>
@@ -59,6 +63,7 @@ export default {
       "Evenemang du deltog",
     ],
     text: "",
+    oldEvents: false,
   }),
   created() {
     this.$store.dispatch("getEvents");

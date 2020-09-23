@@ -1,6 +1,11 @@
 <template>
   <div id="event-list">
-    <Event v-for="event in events" :key="event.id" v-bind:event="event" />
+    <Event
+      v-for="event in events"
+      :key="event.id"
+      v-bind:event="event"
+      v-bind:oldEvents="oldEvents"
+    />
   </div>
 </template>
 
@@ -11,7 +16,7 @@ export default {
   components: {
     Event,
   },
-  props: ["events"],
+  props: ["events", "oldEvents"],
 };
 </script>
 
