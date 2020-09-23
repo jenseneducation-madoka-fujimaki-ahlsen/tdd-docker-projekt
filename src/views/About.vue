@@ -61,4 +61,14 @@ export default {
     margin-bottom: 5rem;
   }
 }
+
+@media (max-width: 600px) {
+  .about_main {
+    margin: 120px 0 0;
+
+    p {
+      width: 80%;
+    }
+  }
+}
 </style>

@@ -89,4 +89,20 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .contact_main {
+    margin: 12rem 8px;
+
+    .contact {
+      span {
+        font-size: 1rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+}
 </style>

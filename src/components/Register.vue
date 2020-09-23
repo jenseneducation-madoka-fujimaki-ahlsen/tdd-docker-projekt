@@ -196,4 +196,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .register-wrap {
+    width: 90%;
+  }
+}
 </style>

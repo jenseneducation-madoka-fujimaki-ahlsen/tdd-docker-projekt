@@ -242,4 +242,15 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  #event-detail {
+    .event-detail-wrap {
+      width: 90%;
+      max-height: 90%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+}
 </style>

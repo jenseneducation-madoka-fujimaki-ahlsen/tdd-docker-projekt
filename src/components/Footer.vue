@@ -89,4 +89,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  #footer {
+    position: static;
+  }
+}
 </style>

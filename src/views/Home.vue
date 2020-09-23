@@ -235,4 +235,46 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  #home {
+    padding-bottom: 0;
+    .hero {
+      p {
+        top: 20%;
+        left: 8px;
+        text-align: center;
+      }
+
+      button {
+        top: 80%;
+        left: 50%;
+        min-width: 200px;
+      }
+
+      .line {
+        display: none;
+      }
+    }
+
+    .upcoming-events {
+      margin-top: 48px;
+
+      h3 {
+        text-align: center;
+      }
+    }
+
+    .event-wrap {
+      .eventTab {
+        margin: 16px 0;
+
+        a {
+          font-size: 14px;
+          margin: 0 16px;
+        }
+      }
+    }
+  }
+}
 </style>

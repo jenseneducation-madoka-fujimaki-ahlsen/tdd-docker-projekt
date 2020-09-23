@@ -170,4 +170,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .login-wrap {
+    width: 90%;
+  }
+}
 </style>

@@ -91,7 +91,7 @@ export default {
   width: 100%;
   height: 100%;
   opacity: 0.7;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background: $black;
@@ -149,6 +149,16 @@ export default {
         object-fit: cover;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .header-wrap {
+    padding: 0 16px;
+  }
+
+  .logo {
+    height: 40px;
   }
 }
 </style>
