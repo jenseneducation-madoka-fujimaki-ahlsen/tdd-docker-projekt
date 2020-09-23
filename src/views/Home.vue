@@ -27,6 +27,12 @@
       <EventList v-if="currentTab === 0" v-bind:events="validEvents" />
       <EventList v-if="currentTab === 1" v-bind:events="joinEvents" />
       <EventList v-if="currentTab === 2" v-bind:events="joinedEvents" />
+      <p class="text" v-show="currentTab === 1 && joinEvents.length === 0">
+        Det finns inga evenemang att delta
+      </p>
+      <p class="text" v-show="currentTab === 2 && joinedEvents.length === 0">
+        Det finns inga evenemang att deltog
+      </p>
     </div>
 
     <Footer />
@@ -52,6 +58,7 @@ export default {
       "Evenemang du planerar att delta",
       "Evenemang du deltog",
     ],
+    text: "",
   }),
   created() {
     this.$store.dispatch("getEvents");
@@ -117,6 +124,9 @@ export default {
 @import "@/scss/main.scss";
 
 #home {
+  min-height: 100vh;
+  padding-bottom: 200px;
+  padding-top: 72px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 72px, auto, auto 40px;
@@ -191,7 +201,6 @@ export default {
 
   .event-wrap {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin-top: 48px;
     margin-bottom: 60px;
@@ -212,6 +221,12 @@ export default {
         color: $pink;
         border-bottom: solid $pink 1px;
       }
+    }
+
+    .text {
+      color: $white;
+      text-align: center;
+      margin: 60px 0;
     }
   }
 }

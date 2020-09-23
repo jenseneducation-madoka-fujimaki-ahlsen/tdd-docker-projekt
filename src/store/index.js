@@ -53,16 +53,16 @@ export default new Vuex.Store({
       state.joinEventId = id;
     },
     joinThisEvent() {
-      setTimeout(myTimer, 200);
-      function myTimer() {
-        alert("Du har sparat evenemanget");
-      }
+      // setTimeout(myTimer, 200);
+      // function myTimer() {
+      //   alert("Du har sparat evenemanget");
+      // }
     },
     removeThisEvent() {
-      setTimeout(myTimer, 200);
-      function myTimer() {
-        alert("Du tagit bort evenemanget");
-      }
+      // setTimeout(myTimer, 200);
+      // function myTimer() {
+      //   alert("Du tagit bort evenemanget");
+      // }
     },
     showEventDetail(state, id) {
       state.eventDetailIsVisible = true;

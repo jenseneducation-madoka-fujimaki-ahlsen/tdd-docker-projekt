@@ -1,7 +1,7 @@
 <template>
   <div id="footer">
     <img
-      @click="$router.push('/')"
+      @click="$router.push('/').catch(() => {})"
       class="logo"
       alt="logo"
       src="@/assets/logo.svg"
@@ -25,11 +25,16 @@ export default {
     links: [
       {
         id: 0,
+        text: "Top",
+        page: "/",
+      },
+      {
+        id: 1,
         text: "Om oss",
         page: "/about",
       },
       {
-        id: 1,
+        id: 2,
         text: "Kontakt",
         page: "/contact",
       },
@@ -42,6 +47,9 @@ export default {
 @import "../scss/main.scss";
 
 #footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   height: 200px;
   padding: 0 24px;
   display: flex;

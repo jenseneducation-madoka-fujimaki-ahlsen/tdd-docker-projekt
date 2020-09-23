@@ -33,14 +33,14 @@ export default {
 @import "@/scss/main.scss";
 
 #contact {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .contact_main {
-  padding: 2rem 0;
+  margin: 12rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -38,14 +38,14 @@ export default {
 @import "@/scss/main.scss";
 
 #about {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .about_main {
-  padding: 2rem 0;
+  margin: 10rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;

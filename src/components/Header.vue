@@ -6,7 +6,7 @@
     ></div>
     <div class="header-wrap">
       <img
-        @click="$router.push('/')"
+        @click="$router.push('/').catch(() => {})"
         class="logo"
         alt="logo"
         src="@/assets/logo.svg"
@@ -80,6 +80,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/main.scss";
+
+#header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
 
 .overlay {
   width: 100%;
