@@ -135,7 +135,7 @@ const events = [
     id: 6,
     title: "Frontend utvecklare",
     place: "Stockholm city",
-    date: "2020-11-15",
+    date: "2019-11-15",
     image: "pc.jpg",
     description:
       "Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",

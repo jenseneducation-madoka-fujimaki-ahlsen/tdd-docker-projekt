@@ -28,6 +28,7 @@
     <button v-else-if="!oldEvents" class="join-button" @click="joinThisEvent">
       Delta
     </button>
+    <Review class="review" v-if="oldEvents" v-bind:event="event" />
     <EventDetail
       v-show="eventDetailIsVisible == true && selectedEventId == event.id"
       v-bind:event="event"
@@ -38,9 +39,11 @@
 
 <script>
 import EventDetail from "@/components/EventDetail.vue";
+import Review from "@/components/Review.vue";
 export default {
   components: {
     EventDetail,
+    Review,
   },
   props: ["event", "oldEvents"],
   data: () => ({}),
@@ -82,7 +85,6 @@ export default {
 @import "@/scss/main.scss";
 
 #event {
-  display: flex;
   position: relative;
   width: 100%;
 }
@@ -146,11 +148,14 @@ export default {
 }
 
 button {
-  min-width: 24%;
+  min-width: auto;
   font-size: 16px;
   line-height: 0;
   height: 40px;
-  margin: 320px 68%;
+  padding-left: 16px;
+  padding-right: 16px;
+  bottom: 32px;
+  right: 28px;
   position: absolute;
 }
 
@@ -161,6 +166,13 @@ button {
 .remove-button:hover {
   background: $white;
   color: $dark-gray;
+}
+
+.review {
+  min-width: auto;
+  position: absolute;
+  bottom: 168px;
+  right: 28px;
 }
 
 #event:hover {
