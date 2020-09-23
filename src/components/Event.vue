@@ -82,6 +82,7 @@ export default {
 
 #event {
   display: flex;
+  position: relative;
 }
 
 .event-wrap {
@@ -143,13 +144,12 @@ export default {
 }
 
 button {
-  min-width: 80px;
+  min-width: 24%;
   font-size: 16px;
   line-height: 0;
   height: 40px;
+  margin: 320px 68%;
   position: absolute;
-
-  margin: 320px 8px 8px 230px;
 }
 
 .remove-button {

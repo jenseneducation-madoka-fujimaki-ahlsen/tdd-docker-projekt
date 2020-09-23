@@ -36,7 +36,14 @@
             >
               <img :src="require(`@/assets/${participant}`)" />
             </div>
-            <button class="join-button" @click="checkLogin(event.id)">
+            <button
+              v-if="joinEvent && loggedIn"
+              class="remove-button"
+              @click="removeThisEvent"
+            >
+              Ta bort
+            </button>
+            <button v-else class="join-button" @click="joinThisEvent">
               Delta
             </button>
           </div>
@@ -52,12 +59,29 @@
 <script>
 export default {
   props: ["event"],
+  computed: {
+    loggedIn() {
+      return this.$store.state.loggedIn;
+    },
+    joinEvent() {
+      return this.event.participant.find((p) => p == this.loginUser.image);
+    },
+    loginUser() {
+      return this.$store.state.loginUser;
+    },
+  },
   methods: {
     hideModal() {
       this.$store.dispatch("hideModal");
     },
-    checkLogin(id) {
-      this.$store.dispatch("checkLogin", id);
+    joinThisEvent() {
+      this.$store.dispatch("checkLogin");
+      if (this.loggedIn === true) {
+        this.$store.dispatch("joinThisEvent", this.event.id);
+      }
+    },
+    removeThisEvent() {
+      this.$store.dispatch("removeThisEvent", this.event.id);
     },
   },
 };
@@ -190,6 +214,16 @@ export default {
 
           button:hover {
             border: 2px $pink solid;
+          }
+
+          .remove-button {
+            background: $light-gray;
+          }
+
+          .remove-button:hover {
+            background: $white;
+            color: $dark-gray;
+            border: none;
           }
         }
       }
