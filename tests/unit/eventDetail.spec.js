@@ -44,4 +44,34 @@ describe("EventDetail.vue", () => {
     //Assert
     expect(storeOptions.actions.checkLogin).toHaveBeenCalled();
   });
+
+  it("should not display button 'Delta' for past events", () => {
+    //Arrange
+    const expected = false;
+    let oldEvents = true;
+    let wrapper = shallowMount(EventDetail, {
+      propsData: { event, oldEvents },
+      localVue,
+      store,
+    });
+    //Act
+    let actual = wrapper.find(".join-button");
+    //Assert
+    expect(actual.exists()).toBe(expected);
+  });
+
+  it("should not display button 'Ta bort' for past events", () => {
+    //Arrange
+    const expected = false;
+    let oldEvents = true;
+    let wrapper = shallowMount(EventDetail, {
+      propsData: { event, oldEvents },
+      localVue,
+      store,
+    });
+    //Act
+    let actual = wrapper.find(".remove-button");
+    //Assert
+    expect(actual.exists()).toBe(expected);
+  });
 });

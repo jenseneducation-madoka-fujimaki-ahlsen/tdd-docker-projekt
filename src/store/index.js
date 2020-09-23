@@ -122,9 +122,9 @@ export default new Vuex.Store({
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
       context.commit("joinThisEvent");
     },
-    removeThisEvent(context, id) {
+    async removeThisEvent(context, id) {
       const LS_KEY = "viewlist-events";
-      this.state.events
+      await this.state.events
         .find((e) => e.id == id)
         .participant.splice(
           this.state.events
