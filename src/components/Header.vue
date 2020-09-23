@@ -82,9 +82,6 @@ export default {
 @import "../scss/main.scss";
 
 #header {
-  position: absolute;
-  width: 100%;
-  top: 0;
 }
 
 .overlay {
@@ -99,6 +96,10 @@ export default {
 }
 
 .header-wrap {
+  position: absolute;
+  width: 100%;
+  top: 0;
+
   height: 72px;
   padding: 0 24px;
   display: flex;

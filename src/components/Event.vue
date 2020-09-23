@@ -84,6 +84,7 @@ export default {
 #event {
   display: flex;
   position: relative;
+  width: 100%;
 }
 
 .event-wrap {
