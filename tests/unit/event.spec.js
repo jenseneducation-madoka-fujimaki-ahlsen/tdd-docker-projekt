@@ -70,7 +70,7 @@ describe("Event.vue", () => {
     //Arrange
     const expected = true;
     storeOptions = {
-      state: { login: false, loginFormIsVisible: false, loginUser: user },
+      state: { loggedIn: true, loginFormIsVisible: false, loginUser: user },
       actions: {
         checkLogin: jest.fn(),
         showEventDetail: jest.fn(),
@@ -93,6 +93,20 @@ describe("Event.vue", () => {
 
   it("should calls store action 'removeThisEvent' when button 'Ta bort' is clicked", () => {
     //Arrange
+    storeOptions = {
+      state: { loggedIn: true, loginFormIsVisible: false, loginUser: user },
+      actions: {
+        checkLogin: jest.fn(),
+        showEventDetail: jest.fn(),
+        removeThisEvent: jest.fn(),
+      },
+    };
+    store = new Vuex.Store(storeOptions);
+    wrapper = shallowMount(Event, {
+      propsData: { event },
+      localVue,
+      store,
+    });
     let button = wrapper.find(".remove-button");
     //Act
     button.trigger("click");
