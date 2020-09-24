@@ -18,7 +18,7 @@
           </div>
           <div class="host-wrap">
             <p>
-              Host:
+              Värd:
             </p>
             <div class="host">
               <img :src="require(`@/assets/${event.host}`)" />
@@ -26,7 +26,7 @@
           </div>
 
           <p class="participant-total">
-            deltagare: {{ event.participant.length }} personer
+            Deltagare: {{ event.participant.length }} personer
           </p>
           <div class="participant-wrap">
             <div
@@ -53,15 +53,38 @@
           </div>
         </div>
       </section>
-      <section class="detail">
-        <p class="description">{{ event.description }}</p>
+      <section class="detail" :class="{ 'detail-with-review': oldEvents }">
+        <div class="review-button-wrap" v-if="oldEvents">
+          <Review
+            class="review"
+            v-bind:event="event"
+            v-bind:isDetailPage="isDetailPage"
+          />
+          <div class="button-wrap">
+            <button>Recensera</button>
+            <button>Se recensioner</button>
+          </div>
+        </div>
+        <p
+          class="description"
+          :class="{ 'description-with-review': oldEvents }"
+        >
+          {{ event.description }}
+        </p>
       </section>
     </div>
   </div>
 </template>
 
 <script>
+import Review from "@/components/Review.vue";
 export default {
+  components: {
+    Review,
+  },
+  data: () => ({
+    isDetailPage: true,
+  }),
   props: ["event", "oldEvents"],
   computed: {
     loggedIn() {
@@ -236,9 +259,35 @@ export default {
     .detail {
       margin: 40px 0;
 
+      .star-wrap {
+        font-size: 40px;
+      }
+
       p {
         line-height: 180%;
       }
+
+      .review-button-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+          min-width: 100px;
+          font-size: 16px;
+          margin: 0 8px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+
+    .detail-with-review {
+      margin-top: 20px;
+    }
+
+    .description-with-review {
+      margin-top: 24px;
     }
   }
 }

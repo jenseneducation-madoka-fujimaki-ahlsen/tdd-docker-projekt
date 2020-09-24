@@ -1,8 +1,8 @@
 <template>
   <div id="review">
     <!-- <span class="heading">User Rating</span> -->
-    <div class="star-wrap">
-      <p>{{ averageReview }}</p>
+    <div class="star-wrap" :class="{ 'is-detail-page': isDetailPage }">
+      <p class="average-review">{{ averageReview }}</p>
       <div class="stars">
         <span class="fa fa-star" :class="{ checked: star1 }"></span>
         <span class="fa fa-star" :class="{ checked: star2 }"></span>
@@ -10,14 +10,19 @@
         <span class="fa fa-star" :class="{ checked: star4 }"></span>
         <span class="fa fa-star" :class="{ checked: star5 }"></span>
       </div>
-      <p>({{ event.reviews.length }})</p>
+      <p v-if="!isDetailPage" class="length-big">
+        ({{ event.reviews.length }})
+      </p>
+      <p v-if="isDetailPage" class="length-small">
+        {{ event.reviews.length }} recensioner
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["event"],
+  props: ["event", "isDetailPage"],
   data: () => ({
     star1: false,
     star2: false,
@@ -79,11 +84,26 @@ export default {
   .star-wrap {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 20px;
 
-    p {
-      margin: 0 4px;
+    .average-review {
+      margin-right: 8px;
     }
+  }
+
+  .is-detail-page {
+    font-size: 32px;
+  }
+
+  .length-big {
+    margin-left: 8px;
+  }
+
+  .length-small {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: 16px;
+    color: $dark-gray3;
   }
 
   .heading {
