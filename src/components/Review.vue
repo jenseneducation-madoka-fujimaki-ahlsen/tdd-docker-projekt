@@ -10,10 +10,16 @@
         <span class="fa fa-star" :class="{ checked: star4 }"></span>
         <span class="fa fa-star" :class="{ checked: star5 }"></span>
       </div>
-      <p v-if="!isDetailPage" class="length-big">
+      <p
+        v-if="!isDetailPage && individualReview == undefined"
+        class="length-big"
+      >
         ({{ event.reviews.length }})
       </p>
-      <p v-if="isDetailPage" class="length-small">
+      <p
+        v-if="isDetailPage && individualReview == undefined"
+        class="length-small"
+      >
         {{ event.reviews.length }} recensioner
       </p>
     </div>
@@ -22,7 +28,7 @@
 
 <script>
 export default {
-  props: ["event", "isDetailPage"],
+  props: ["event", "isDetailPage", "individualReview"],
   data: () => ({
     star1: false,
     star2: false,
@@ -33,7 +39,9 @@ export default {
   computed: {
     averageReview() {
       let total = 0;
-      if (this.event.reviews.length !== 0) {
+      if (this.individualReview != undefined) {
+        return this.individualReview;
+      } else if (this.event.reviews.length !== 0) {
         this.event.reviews.forEach((r) => {
           total += r.review;
         });
@@ -46,32 +54,62 @@ export default {
   },
 
   mounted() {
-    if (this.averageReview > 0.5 && this.averageReview < 1.5) {
-      this.star1 = true;
-    } else if (this.averageReview > 1.5 && this.averageReview < 2.5) {
-      this.star1 = true;
-      this.star2 = true;
-    } else if (this.averageReview > 2.5 && this.averageReview < 3.5) {
-      this.star1 = true;
-      this.star2 = true;
-      this.star3 = true;
-    } else if (this.averageReview > 3.5 && this.averageReview < 4.5) {
-      this.star1 = true;
-      this.star2 = true;
-      this.star3 = true;
-      this.star4 = true;
-    } else if (this.averageReview > 4.5) {
-      this.star1 = true;
-      this.star2 = true;
-      this.star3 = true;
-      this.star4 = true;
-      this.star5 = true;
+    if (this.individualReview == undefined) {
+      if (this.averageReview > 0.5 && this.averageReview < 1.5) {
+        this.star1 = true;
+      } else if (this.averageReview > 1.5 && this.averageReview < 2.5) {
+        this.star1 = true;
+        this.star2 = true;
+      } else if (this.averageReview > 2.5 && this.averageReview < 3.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+      } else if (this.averageReview > 3.5 && this.averageReview < 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+      } else if (this.averageReview > 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = true;
+      } else {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      }
     } else {
-      this.star1 = false;
-      this.star2 = false;
-      this.star3 = false;
-      this.star4 = false;
-      this.star5 = false;
+      if (this.individualReview > 0.5 && this.individualReview < 1.5) {
+        this.star1 = true;
+      } else if (this.individualReview > 1.5 && this.individualReview < 2.5) {
+        this.star1 = true;
+        this.star2 = true;
+      } else if (this.individualReview > 2.5 && this.individualReview < 3.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+      } else if (this.individualReview > 3.5 && this.individualReview < 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+      } else if (this.individualReview > 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = true;
+      } else {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      }
     }
   },
 };

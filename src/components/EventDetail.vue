@@ -61,8 +61,19 @@
             v-bind:isDetailPage="isDetailPage"
           />
           <div class="button-wrap">
-            <button>Recensera</button>
-            <button>Se recensioner</button>
+            <a href="">
+              <button>Recensera</button>
+            </a>
+            <a :href="'#review' + event.id">
+              <button
+                @click="$router.push('/#reviews' + event.id).catch(() => {})"
+                :disabled="event.reviews.length == 0"
+                :class="{ 'disabled-button': event.reviews.length == 0 }"
+                class="see-recensioner"
+              >
+                Se recensioner
+              </button></a
+            >
           </div>
         </div>
         <p
@@ -71,16 +82,22 @@
         >
           {{ event.description }}
         </p>
+        <IndividualReview
+          v-if="oldEvents && event.reviews.length != 0"
+          v-bind:event="event"
+        />
       </section>
     </div>
   </div>
 </template>
 
 <script>
+import IndividualReview from "@/components/IndividualReview.vue";
 import Review from "@/components/Review.vue";
 export default {
   components: {
     Review,
+    IndividualReview,
   },
   data: () => ({
     isDetailPage: true,
@@ -99,6 +116,7 @@ export default {
   },
   methods: {
     hideModal() {
+      this.$router.push("/").catch(() => {});
       this.$store.dispatch("hideModal");
     },
     joinThisEvent() {
@@ -132,7 +150,7 @@ export default {
   .event-detail-wrap {
     position: fixed;
     width: 900px;
-    height: auto;
+    height: 75%;
     background: $light-gray2;
     z-index: 999;
     border-radius: 10px;
@@ -147,6 +165,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     .close-wrap {
       width: 40px;
@@ -271,6 +291,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 68px;
 
         button {
           min-width: 100px;
@@ -278,6 +299,35 @@ export default {
           margin: 0 8px;
           padding-left: 8px;
           padding-right: 8px;
+        }
+
+        // button:hover {
+        //   border: solid $pink 2px;
+        // }
+
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+
+        .see-recensioner {
+          background: $yellow;
+        }
+
+        .see-recensioner:hover {
+          background: $white;
+          color: $yellow;
+          // border: solid $yellow 2px;
+        }
+
+        .disabled-button {
+          background: $light-gray;
+          color: $white;
+        }
+
+        .disabled-button:hover {
+          background: $light-gray;
+          color: $white;
         }
       }
     }

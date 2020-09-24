@@ -58,8 +58,17 @@ const events = [
     host: people[0].image,
     participant: [people[0].image, people[1].image, people[3].image],
     reviews: [
-      { person: people[0].image, review: 5 },
-      { person: people[1].image, review: 3 },
+      {
+        person: people[0].image,
+        review: 5,
+        comment:
+          "Justo nisl condimentum urna, nec sodales orci dolor vitae dolor. ",
+      },
+      {
+        person: people[1].image,
+        review: 3,
+        comment: "Donec consectetur libero et ipsum aliquam",
+      },
     ],
   },
   {
@@ -78,9 +87,21 @@ const events = [
       people[4].image,
     ],
     reviews: [
-      { person: people[0].image, review: 3 },
-      { person: people[3].image, review: 4 },
-      { person: people[4].image, review: 4 },
+      {
+        person: people[0].image,
+        review: 3,
+        comment: "Donec consectetur libero et ipsum aliquam",
+      },
+      {
+        person: people[3].image,
+        review: 4,
+        comment: "",
+      },
+      {
+        person: people[4].image,
+        review: 4,
+        comment: "Lacus suscipit neque, aliquam suscipit dui nulla in arcu",
+      },
     ],
   },
   {

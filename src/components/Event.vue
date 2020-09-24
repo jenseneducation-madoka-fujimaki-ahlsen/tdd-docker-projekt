@@ -28,7 +28,12 @@
     <button v-else-if="!oldEvents" class="join-button" @click="joinThisEvent">
       Delta
     </button>
-    <Review class="review" v-if="oldEvents" v-bind:event="event" />
+    <Review
+      class="review"
+      v-if="oldEvents"
+      v-bind:event="event"
+      @click.native="showEventDetail(event.id)"
+    />
     <EventDetail
       v-show="eventDetailIsVisible == true && selectedEventId == event.id"
       v-bind:event="event"
@@ -173,6 +178,7 @@ button {
   position: absolute;
   bottom: 168px;
   right: 28px;
+  cursor: pointer;
 }
 
 #event:hover {
