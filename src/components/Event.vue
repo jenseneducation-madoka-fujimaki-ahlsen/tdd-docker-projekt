@@ -165,7 +165,7 @@ button {
 }
 
 .remove-button {
-  background: $light-gray;
+  background: $black;
 }
 
 .remove-button:hover {

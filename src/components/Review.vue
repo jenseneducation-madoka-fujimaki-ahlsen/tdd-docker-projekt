@@ -52,6 +52,87 @@ export default {
       }
     },
   },
+  watch: {
+    averageReview(newValue) {
+      if (newValue > 0.5 && newValue < 1.5) {
+        this.star1 = true;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 1.5 && newValue < 2.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 2.5 && newValue < 3.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 3.5 && newValue < 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = false;
+      } else if (newValue > 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = true;
+      } else {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      }
+    },
+    individualReview: function(newValue) {
+      console.log(newValue);
+      if (newValue > 0.5 && newValue < 1.5) {
+        this.star1 = true;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 1.5 && newValue < 2.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 2.5 && newValue < 3.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue > 3.5 && newValue < 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = false;
+      } else if (newValue > 4.5) {
+        this.star1 = true;
+        this.star2 = true;
+        this.star3 = true;
+        this.star4 = true;
+        this.star5 = true;
+      } else {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      }
+    },
+  },
 
   mounted() {
     if (this.individualReview == undefined) {
@@ -151,6 +232,18 @@ export default {
 
   .checked {
     color: $yellow;
+  }
+}
+
+@media (max-width: 600px) {
+  #review {
+    .is-detail-page {
+      font-size: 20px;
+    }
+
+    .length-small {
+      font-size: 16px;
+    }
   }
 }
 </style>

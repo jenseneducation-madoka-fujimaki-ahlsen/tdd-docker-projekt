@@ -61,9 +61,7 @@
             v-bind:isDetailPage="isDetailPage"
           />
           <div class="button-wrap">
-            <a href="">
-              <button>Recensera</button>
-            </a>
+            <button @click="openSetReview">Recensera</button>
             <a :href="'#review' + event.id">
               <button
                 @click="$router.push('/#reviews' + event.id).catch(() => {})"
@@ -88,16 +86,19 @@
         />
       </section>
     </div>
+    <SetReview v-show="setReviewIsVisible" v-bind:event="event" />
   </div>
 </template>
 
 <script>
 import IndividualReview from "@/components/IndividualReview.vue";
 import Review from "@/components/Review.vue";
+import SetReview from "@/components/SetReview.vue";
 export default {
   components: {
     Review,
     IndividualReview,
+    SetReview,
   },
   data: () => ({
     isDetailPage: true,
@@ -113,6 +114,9 @@ export default {
     loginUser() {
       return this.$store.state.loginUser;
     },
+    setReviewIsVisible() {
+      return this.$store.state.setReviewIsVisible;
+    },
   },
   methods: {
     hideModal() {
@@ -127,6 +131,9 @@ export default {
     },
     removeThisEvent() {
       this.$store.dispatch("removeThisEvent", this.event.id);
+    },
+    openSetReview() {
+      this.$store.dispatch("openSetReview");
     },
   },
 };
@@ -167,6 +174,7 @@ export default {
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 
     .close-wrap {
       width: 40px;
@@ -179,6 +187,7 @@ export default {
     .info-wrap {
       display: flex;
       padding-top: 24px;
+      flex-wrap: wrap;
 
       .image {
         width: 50%;
@@ -264,7 +273,7 @@ export default {
           }
 
           .remove-button {
-            background: $light-gray;
+            background: $dark-gray;
           }
 
           .remove-button:hover {
@@ -292,6 +301,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         height: 68px;
+        flex-wrap: wrap;
 
         button {
           min-width: 100px;
@@ -349,7 +359,45 @@ export default {
       max-height: 90%;
       overflow-y: scroll;
       overflow-x: hidden;
+
+      .info-wrap {
+        display: block;
+        .image {
+          margin-top: 30px;
+          width: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .info {
+          .title {
+            margin: 4px 0 4px;
+          }
+          .participant-total {
+            margin-top: 16px;
+          }
+          .participant-wrap {
+            button {
+              margin: 60px auto 0;
+              position: absolute;
+              min-width: 50%;
+            }
+          }
+        }
+      }
+
+      .detail {
+        p {
+          margin-top: 40px;
+        }
+      }
     }
+  }
+
+  .button-wrap {
+    margin: 8px 0;
   }
 }
 </style>

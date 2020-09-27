@@ -1,4 +1,4 @@
-import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
 import EventDetail from "@/components/EventDetail.vue";
 import Vuex from "vuex";
 

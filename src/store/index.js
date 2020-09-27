@@ -22,6 +22,7 @@ export default new Vuex.Store({
     },
     selectedEventId: "",
     error: "",
+    setReviewIsVisible: false,
   },
   mutations: {
     getEvents(state) {
@@ -102,6 +103,18 @@ export default new Vuex.Store({
         alert("Du har loggat ut");
       }
     },
+    hideSetReview(state) {
+      state.setReviewIsVisible = false;
+    },
+    openSetReview(state) {
+      state.setReviewIsVisible = true;
+    },
+    postReview(state) {
+      state.setReviewIsVisible = false;
+    },
+    removeReview(state) {
+      state.setReviewIsVisible = false;
+    },
   },
   actions: {
     getEvents(context) {
@@ -171,6 +184,51 @@ export default new Vuex.Store({
     },
     logOut(context) {
       context.commit("logOut");
+    },
+    hideSetReview(context) {
+      context.commit("hideSetReview");
+    },
+    openSetReview(context) {
+      context.commit("openSetReview");
+    },
+    postReview(context, userReview) {
+      const LS_KEY = "viewlist-events";
+      if (userReview.update == true) {
+        this.state.events
+          .find((e) => e.id == userReview.event.id)
+          .reviews.filter(
+            (r) => r.person == this.state.loginUser.image
+          )[0].review = userReview.star;
+
+        this.state.events
+          .find((e) => e.id == userReview.event.id)
+          .reviews.filter(
+            (r) => r.person == this.state.loginUser.image
+          )[0].comment = userReview.comment;
+      } else {
+        this.state.events
+          .find((e) => e.id == userReview.event.id)
+          .reviews.push({
+            person: this.state.loginUser.image,
+            review: userReview.star,
+            comment: userReview.comment,
+          });
+      }
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("postReview");
+    },
+    removeReview(context, event) {
+      const LS_KEY = "viewlist-events";
+      this.state.events
+        .find((e) => e.id == event.id)
+        .reviews.splice(
+          this.state.events
+            .find((e) => e.id == event.id)
+            .reviews.findIndex((e) => e.person === this.state.loginUser.image),
+          1
+        );
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("removeReview");
     },
   },
   modules: {},
