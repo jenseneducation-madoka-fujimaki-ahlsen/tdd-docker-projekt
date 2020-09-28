@@ -42,7 +42,7 @@ describe("Review.vue", () => {
   it("should display average of reviews when renders", () => {
     //Arrange
     const expected = 4;
-    //Act
+
     let actual = wrapper.vm.averageReview;
     //Assert
     expect(actual).toBe(expected);

@@ -79,7 +79,6 @@ describe("Header.vue", () => {
     //Arrange
     const expected = true;
 
-    //Act
     const childComponent = wrapper.findComponent(Login);
     let actual = childComponent.find("#login").exists();
     //Assert
@@ -90,7 +89,6 @@ describe("Header.vue", () => {
     //Arrange
     const expected = true;
 
-    //Act
     const childComponent = wrapper.findComponent(Register);
     let actual = childComponent.find("#register").exists();
     //Assert
@@ -100,7 +98,7 @@ describe("Header.vue", () => {
   it("should not display link 'Logga in' when logged in", async () => {
     //Arrange
     const expected = "display: none;";
-    //Act
+
     let actual = wrapper.find(".login-button");
     //Assert
     expect(actual.attributes().style).toBe(expected);

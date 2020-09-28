@@ -76,7 +76,7 @@ describe("Home.vue", () => {
   it("should get event data from store when renders", () => {
     //Arrange
     const expected = store.state.events.length;
-    //Act
+
     let actual = wrapper.vm.events.length;
     //Assert
     expect(actual).toBe(expected);
@@ -85,7 +85,7 @@ describe("Home.vue", () => {
   it("should be displayed only events with valid dates", () => {
     //Arrange
     const expected = 1;
-    //Act
+
     let actual = wrapper.vm.validEvents.length;
     //Assert
     expect(actual).toBe(expected);
@@ -94,7 +94,7 @@ describe("Home.vue", () => {
   it("should not display hero when logged in", async () => {
     //Arrange
     const expected = "display: none;";
-    //Act
+
     let actual = wrapper.find(".hero");
 
     //Assert
@@ -104,7 +104,7 @@ describe("Home.vue", () => {
   it("should display eventTab when logged in", async () => {
     //Arrange
     const expected = true;
-    //Act
+
     let actual = wrapper.find(".eventTab");
 
     //Assert

@@ -70,7 +70,7 @@ describe("Home.vue", () => {
   it("should get event data from Home.vue when renders", () => {
     //Arrange
     const expected = wrapper.vm.events.length;
-    //Act
+
     let actual = wrapper2.vm.events.length;
 
     //Assert

@@ -54,7 +54,6 @@ describe("EventDetail.vue", () => {
       localVue,
       store,
     });
-    //Act
     let actual = wrapper.find(".join-button");
     //Assert
     expect(actual.exists()).toBe(expected);
@@ -69,7 +68,7 @@ describe("EventDetail.vue", () => {
       localVue,
       store,
     });
-    //Act
+
     let actual = wrapper.find(".remove-button");
     //Assert
     expect(actual.exists()).toBe(expected);
