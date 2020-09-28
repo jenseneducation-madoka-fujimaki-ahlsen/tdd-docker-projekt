@@ -16,6 +16,7 @@
             deltagare: {{ event.participant.length }} personer
           </p>
         </div>
+        <span class="is-host" v-if="isHost">Du är värd</span>
       </div>
     </div>
     <button
@@ -159,6 +160,11 @@ export default {
         height: 19px;
         margin-right: 8px;
       }
+    }
+
+    .is-host {
+      color: $pink;
+      margin-right: 8px;
     }
   }
 }
