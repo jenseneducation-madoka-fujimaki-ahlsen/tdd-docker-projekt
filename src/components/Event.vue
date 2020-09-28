@@ -19,13 +19,17 @@
       </div>
     </div>
     <button
-      v-if="joinEvent && loggedIn && !oldEvents"
+      v-if="joinEvent && loggedIn && !oldEvents && !isHost"
       class="remove-button"
       @click="removeThisEvent"
     >
       Ta bort
     </button>
-    <button v-else-if="!oldEvents" class="join-button" @click="joinThisEvent">
+    <button
+      v-else-if="!oldEvents && !isHost"
+      class="join-button"
+      @click="joinThisEvent"
+    >
       Delta
     </button>
     <Review
@@ -50,8 +54,15 @@ export default {
     EventDetail,
     Review,
   },
+  data: () => ({
+    isHost: false,
+  }),
   props: ["event", "oldEvents"],
-  data: () => ({}),
+  mounted() {
+    if (this.loginUser.image == this.event.host) {
+      this.isHost = true;
+    }
+  },
   computed: {
     eventDetailIsVisible() {
       return this.$store.state.eventDetailIsVisible;
