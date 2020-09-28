@@ -93,7 +93,7 @@
         />
       </section>
     </div>
-    <SetReview v-show="setReviewIsVisible" v-bind:event="event" />
+    <SetReview v-if="setReviewIsVisible" v-bind:event="event" />
   </div>
 </template>
 
