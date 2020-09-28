@@ -24,7 +24,19 @@ describe("EventDetail.vue", () => {
 
   beforeEach(() => {
     storeOptions = {
-      state: { login: false, loginFormIsVisible: false },
+      state: {
+        login: false,
+        loginFormIsVisible: false,
+        loginUser: {
+          id: 1,
+          name: "Madoka",
+          email: "madoka@madoka.com",
+          password: "madoka123",
+          image: "2.jpg",
+          participate: [],
+          participated: [],
+        },
+      },
       actions: { checkLogin: jest.fn() },
     };
     store = new Vuex.Store(storeOptions);

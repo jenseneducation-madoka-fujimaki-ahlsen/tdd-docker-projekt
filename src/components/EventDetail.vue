@@ -23,6 +23,13 @@
             <div class="host">
               <img :src="require(`@/assets/${event.host}`)" />
             </div>
+            <button
+              v-if="isHost && !oldEvents"
+              class="cancel-button"
+              @click="cancelEvent"
+            >
+              Ställa in evenemanget
+            </button>
           </div>
 
           <p class="participant-total">
@@ -37,14 +44,14 @@
               <img :src="require(`@/assets/${participant}`)" />
             </div>
             <button
-              v-if="joinEvent && loggedIn && !oldEvents"
+              v-if="joinEvent && loggedIn && !oldEvents && !isHost"
               class="remove-button"
               @click="removeThisEvent"
             >
               Ta bort
             </button>
             <button
-              v-else-if="!oldEvents"
+              v-else-if="!oldEvents && !isHost"
               class="join-button"
               @click="joinThisEvent"
             >
@@ -102,8 +109,14 @@ export default {
   },
   data: () => ({
     isDetailPage: true,
+    isHost: false,
   }),
   props: ["event", "oldEvents"],
+  mounted() {
+    if (this.loginUser.image == this.event.host) {
+      this.isHost = true;
+    }
+  },
   computed: {
     loggedIn() {
       return this.$store.state.loggedIn;
@@ -134,6 +147,9 @@ export default {
     },
     openSetReview() {
       this.$store.dispatch("openSetReview");
+    },
+    cancelEvent() {
+      this.$store.dispatch("cancelEvent", this.event.id);
     },
   },
 };
@@ -235,6 +251,23 @@ export default {
               object-fit: cover;
             }
           }
+
+          .cancel-button {
+            min-width: 80px;
+            font-size: 16px;
+            line-height: 0;
+            height: 40px;
+            position: absolute;
+            right: 24px;
+            padding: 0 16px;
+            background: $black;
+          }
+
+          .cancel-button:hover {
+            color: $dark-gray;
+            background: $white;
+            border: 2px $dark-gray solid;
+          }
         }
 
         .participant-total {
@@ -265,7 +298,7 @@ export default {
             line-height: 0;
             height: 40px;
             position: absolute;
-            margin-left: 300px;
+            right: 24px;
           }
 
           button:hover {
@@ -273,13 +306,13 @@ export default {
           }
 
           .remove-button {
-            background: $dark-gray;
+            background: $black;
           }
 
           .remove-button:hover {
             background: $white;
             color: $dark-gray;
-            border: none;
+            border: 2px $dark-gray solid;
           }
         }
       }

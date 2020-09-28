@@ -10,6 +10,7 @@ export default new Vuex.Store({
     loginFormIsVisible: false,
     registerFormIsVisible: false,
     eventDetailIsVisible: false,
+    eventFormIsVisible: false,
     loggedIn: true,
     loginUser: {
       id: 0,
@@ -47,10 +48,18 @@ export default new Vuex.Store({
         state.registerFormIsVisible = false;
       }
     },
+    showEventForm(state) {
+      if (state.eventFormIsVisible == false) {
+        state.eventFormIsVisible = true;
+      } else {
+        state.eventFormIsVisible = false;
+      }
+    },
     hideModal(state) {
       state.registerFormIsVisible = false;
       state.loginFormIsVisible = false;
       state.eventDetailIsVisible = false;
+      state.eventFormIsVisible = false;
     },
     checkLogin(state, id) {
       if (state.loggedIn == true) {
@@ -98,6 +107,7 @@ export default new Vuex.Store({
     },
     logOut(state) {
       state.loggedIn = false;
+      state.eventFormIsVisible = false;
       setTimeout(myTimer, 200);
       function myTimer() {
         alert("Du har loggat ut");
@@ -115,6 +125,12 @@ export default new Vuex.Store({
     removeReview(state) {
       state.setReviewIsVisible = false;
     },
+    addEvent(state) {
+      state.eventFormIsVisible = false;
+    },
+    cancelEvent(state) {
+      state.eventDetailIsVisible = false;
+    },
   },
   actions: {
     getEvents(context) {
@@ -128,6 +144,9 @@ export default new Vuex.Store({
     },
     showRegisterForm(context) {
       context.commit("showRegisterForm");
+    },
+    showEventForm(context) {
+      context.commit("showEventForm");
     },
     hideModal(context) {
       context.commit("hideModal");
@@ -229,6 +248,21 @@ export default new Vuex.Store({
         );
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
       context.commit("removeReview");
+    },
+    addEvent(context, newEvent) {
+      const LS_KEY = "viewlist-events";
+      this.state.events.push(newEvent);
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("addEvent");
+    },
+    cancelEvent(context, id) {
+      const LS_KEY = "viewlist-events";
+      this.state.events.splice(
+        this.state.events.findIndex((e) => e.id === id),
+        1
+      );
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.events));
+      context.commit("cancelEvent");
     },
   },
   modules: {},

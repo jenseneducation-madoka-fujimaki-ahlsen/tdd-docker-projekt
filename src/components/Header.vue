@@ -2,7 +2,7 @@
   <div id="header">
     <div
       class="overlay"
-      v-if="loginFormIsVisible || registerFormIsVisible"
+      v-if="loginFormIsVisible || registerFormIsVisible || eventFormIsVisible"
     ></div>
     <div class="header-wrap">
       <img
@@ -23,6 +23,9 @@
           Bli medlem
         </a>
         <div class="afterLogin" v-if="loggedIn">
+          <button class="event-form-button" v-on:click="showEventForm">
+            Lägga till evenemang
+          </button>
           <a v-on:click="logOut" class="log-out-button">
             Logga ut
           </a>
@@ -32,6 +35,7 @@
         </div>
       </div>
     </div>
+    <AddEvent v-if="eventFormIsVisible" />
     <Login v-if="loginFormIsVisible" />
     <Register v-if="registerFormIsVisible" />
   </div>
@@ -40,11 +44,13 @@
 <script>
 import Login from "@/components/Login";
 import Register from "@/components/Register";
+import AddEvent from "@/components/AddEvent";
 
 export default {
   components: {
     Login,
     Register,
+    AddEvent,
   },
   data: () => ({}),
   computed: {
@@ -53,6 +59,9 @@ export default {
     },
     registerFormIsVisible() {
       return this.$store.state.registerFormIsVisible;
+    },
+    eventFormIsVisible() {
+      return this.$store.state.eventFormIsVisible;
     },
     loggedIn() {
       return this.$store.state.loggedIn;
@@ -73,6 +82,9 @@ export default {
     },
     logOut() {
       this.$store.dispatch("logOut");
+    },
+    showEventForm() {
+      this.$store.dispatch("showEventForm");
     },
   },
 };
@@ -149,6 +161,21 @@ export default {
         object-fit: cover;
       }
     }
+
+    .event-form-button {
+      font-size: 16px;
+      min-width: 20px;
+      padding: 0 16px;
+      margin-right: 16px;
+      border: 1px solid $white;
+      border-radius: 50px;
+      background: none;
+    }
+
+    .event-form-button:hover {
+      background: $white;
+      color: $pink;
+    }
   }
 }
 
@@ -158,7 +185,30 @@ export default {
   }
 
   .logo {
-    height: 40px;
+    height: 38px;
+  }
+
+  .nav {
+    a {
+      padding: 8px;
+      font-size: 14px;
+    }
+    .afterLogin {
+      .event-form-button {
+        font-size: 14px;
+        padding: 0;
+        margin-right: 0;
+        border: none;
+        border-radius: 50px;
+        background: none;
+        line-height: 16px;
+      }
+
+      .event-form-button:hover {
+        background: none;
+        color: $white;
+      }
+    }
   }
 }
 </style>

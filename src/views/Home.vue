@@ -228,7 +228,7 @@ export default {
         color: $pink;
         border-bottom: 2px solid $pink;
         padding-bottom: 20px;
-        z-index: 999;
+        z-index: 99;
       }
     }
 
@@ -290,7 +290,13 @@ export default {
           margin: 0 16px;
         }
       }
+    }
+  }
+}
 
+@media (max-width: 900px) {
+  #home {
+    .event-wrap {
       hr {
         display: none;
       }
