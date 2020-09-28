@@ -24,6 +24,7 @@
           {{ tab }}
         </a>
       </div>
+      <hr />
       <EventList v-if="currentTab === 0" v-bind:events="validEvents" />
       <EventList v-if="currentTab === 1" v-bind:events="joinEvents" />
       <EventList
@@ -32,10 +33,10 @@
         v-bind:oldEvents="(oldEvents = true)"
       />
       <p class="text" v-show="currentTab === 1 && joinEvents.length === 0">
-        Det finns inga evenemang att delta
+        Det finns inga evenemang att delta i
       </p>
       <p class="text" v-show="currentTab === 2 && joinedEvents.length === 0">
-        Det finns inga evenemang att deltog
+        Det finns inga evenemang att deltog i
       </p>
     </div>
 
@@ -59,8 +60,8 @@ export default {
     currentTab: 0,
     tabList: [
       "Alla kommande evenemang",
-      "Evenemang du planerar att delta",
-      "Evenemang du deltog",
+      "Evenemang du planerar att delta i",
+      "Evenemang du deltog i",
     ],
     text: "",
     oldEvents: false,
@@ -207,13 +208,14 @@ export default {
   .event-wrap {
     display: flex;
     flex-direction: column;
-    margin-top: 48px;
+    margin-top: 32px;
     margin-bottom: 60px;
+    position: relative;
 
     .eventTab {
       display: flex;
       justify-content: center;
-      margin: 24px 0;
+      padding-bottom: 20px;
 
       a {
         margin: 0 24px;
@@ -224,8 +226,22 @@ export default {
 
       .active {
         color: $pink;
-        border-bottom: solid $pink 1px;
+        border-bottom: 2px solid $pink;
+        padding-bottom: 20px;
+        z-index: 999;
       }
+    }
+
+    hr {
+      border: none;
+      width: 100%;
+      background-color: $light-gray;
+      height: 0.5px;
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
     }
 
     .text {
@@ -273,6 +289,10 @@ export default {
           font-size: 14px;
           margin: 0 16px;
         }
+      }
+
+      hr {
+        display: none;
       }
     }
   }
