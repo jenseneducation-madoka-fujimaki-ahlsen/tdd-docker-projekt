@@ -23,10 +23,8 @@ jobs:
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run e2e tests
-          run: npm run e2e
-          env:
-          BROWSER: chrome
-         
+          run: npm run e2e http://localhost:9515
+
       - name: Run unit tests
         run: npm run test:unit
         if: ${{ success() }}
