@@ -21,11 +21,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install ci
+        run: npm ci
+
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
-        run: npm ci
         run: npm run test:unit
 
       - name: Run e2e tests
-        run: npm ci
         run: npm run e2e
