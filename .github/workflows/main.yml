@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@master
 
        # —— Setup Docker Environment 🐋 ————————————————————————————————————————————
-      - name: Build containers
+      - name: Build container
       run: docker build -t tdd-docker-projekt .
 
-       - name: Build containers
+       - name: run container
       run: docker run -it -p 8081:8080 --rm --name docker-container tdd-docker-projekt
 
        # —— Setup node 🐋 ————————————————————————————————————————————
