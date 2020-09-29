@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit --watchAll",
     "lint": "vue-cli-service lint",
-    "e2e": "nightwatch --config nightwatch.conf.js"
+    "e2e": "nightwatch --config nightwatch.conf.js --browsertime.chrome.args no-sandbox"
   },
   "dependencies": {
     "core-js": "^3.6.5",
