@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-     - name: build
+      - name: Build
         run: npm run build
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
