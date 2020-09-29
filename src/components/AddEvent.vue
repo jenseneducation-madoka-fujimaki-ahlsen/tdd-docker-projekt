@@ -8,7 +8,7 @@
       <form>
         <input
           v-model="title"
-          class="Title"
+          class="title"
           placeholder="Titel"
           required="required"
           @keyup="checkForm()"
@@ -41,6 +41,7 @@
           id="selectedFile"
           style="display: none;"
           @change="onFileChange"
+          class="img-file"
         />
         <input
           class="file-button"
@@ -51,6 +52,7 @@
 
         <button
           type="button"
+          class="add-event-button"
           @click="addEvent"
           :disabled="!valid"
           :class="{
