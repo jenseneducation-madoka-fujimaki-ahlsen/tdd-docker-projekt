@@ -5,9 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit --watchAll --watch=false --browsers=ChromeHeadless",
+    "test:unit": "vue-cli-service test:unit --watchAll",
     "lint": "vue-cli-service lint",
-    "e2e": "nightwatch --config nightwatch.conf.js --watch=false --browsers=ChromeHeadless"
+    "e2e": "nightwatch --config nightwatch.conf.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
