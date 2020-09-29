@@ -9,16 +9,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+       # —— Setup Github Actions 🐙 —————————————————————————————————————————————
       - uses: actions/checkout@master
 
+       # —— Setup Docker Environment 🐋 ————————————————————————————————————————————
+      - name: Build containers
+      run: docker build -t tdd-docker-projekt .
+
+       - name: Build containers
+      run: docker run -it -p 8081:8080 --rm --name docker-container tdd-docker-projekt
+
+       # —— Setup node 🐋 ————————————————————————————————————————————
       - name: Setup NodeJs
         uses: actions/setup-node@v1
         with:
-          node-version: "10.x"
+          node-version: "12.16.2"
 
       - name: Install Dependencies
         run: npm install
 
+      # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
         run: npm run test:unit
 
