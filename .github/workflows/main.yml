@@ -26,7 +26,14 @@ jobs:
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
-        run: CI=true npm run test:unit
+        with:
+          build: npm run build
+          run: CI=true npm run test:unit
 
+        # run: CI=true npm run test:unit
       - name: Run e2e tests
-        run: CI=true npm run e2e
+        with:
+          build: npm run build
+          run: CI=true npm run e2e
+          wait-on: http://localhost:9515
+        # run: CI=true npm run e2e

@@ -64,6 +64,13 @@ export default {
       this.isHost = true;
     }
   },
+  watch: {
+    "loginUser.image": function(val) {
+      if (val == this.event.host) {
+        this.isHost = true;
+      }
+    },
+  },
   computed: {
     eventDetailIsVisible() {
       return this.$store.state.eventDetailIsVisible;

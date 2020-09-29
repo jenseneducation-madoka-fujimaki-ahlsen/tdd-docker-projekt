@@ -117,6 +117,13 @@ export default {
       this.isHost = true;
     }
   },
+  watch: {
+    "loginUser.image": function(val) {
+      if (val == this.event.host) {
+        this.isHost = true;
+      }
+    },
+  },
   computed: {
     loggedIn() {
       return this.$store.state.loggedIn;
