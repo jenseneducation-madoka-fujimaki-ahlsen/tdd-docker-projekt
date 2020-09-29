@@ -28,12 +28,12 @@ jobs:
       - name: Run unit tests
         with:
           build: npm run build
-          run: CI=true npm run test:unit
+          start: CI=true npm run test:unit
 
         # run: CI=true npm run test:unit
       - name: Run e2e tests
         with:
           build: npm run build
-          run: CI=true npm run e2e
+          start: CI=true npm run e2e
           wait-on: http://localhost:9515
         # run: CI=true npm run e2e
