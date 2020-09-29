@@ -22,9 +22,9 @@ jobs:
         run: npm install
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
-      - name: Run e2e tests
-         run: npm run e2e
-
       - name: Run unit tests
         run: npm run test:unit
         if: ${{ success() }}
+
+      - name: Run e2e tests
+         run: npm run e2e
