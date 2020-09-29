@@ -28,7 +28,7 @@ jobs:
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run e2e tests
        with:
-          config-file: /nightwatch.conf.json
+          config-file: /nightwatch.conf.js
           run: npm run e2e
           browser: ${{matrix.browser}}
           record: true
