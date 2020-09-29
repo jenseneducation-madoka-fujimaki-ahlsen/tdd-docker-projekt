@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        browser: [chrome]
-
     steps:
       # —— Setup Github Actions 🐙 —————————————————————————————————————————————
       - uses: actions/checkout@master
@@ -27,13 +23,10 @@ jobs:
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run e2e tests
-       with:
-          config-file: /nightwatch.conf.js
           run: npm run e2e
-          browser: ${{matrix.browser}}
-          record: true
-        
-
+          env:
+          BROWSER: chrome
+         
       - name: Run unit tests
         run: npm run test:unit
         if: ${{ success() }}
