@@ -27,10 +27,12 @@ jobs:
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
         run: npm run test:unit
-        CI: true
+        env:
+          CI: true
         id: unittest
 
       - name: Check Tests Passed
         if: steps.unittest.outputs.result != 0
         run: npm run e2e
-        CI: true
+        env:
+          CI: true
