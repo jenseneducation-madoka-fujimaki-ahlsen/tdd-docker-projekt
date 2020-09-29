@@ -11,6 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Run unit tests
         run: npm run test:unit
 
