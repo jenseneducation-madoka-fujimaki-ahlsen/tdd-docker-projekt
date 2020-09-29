@@ -23,7 +23,9 @@ jobs:
 
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
-        if: npm run test:unit
+        run: npm run test:unit
+        if: success()
 
       - name: Run e2e tests
-        if: npm run e2e
+        run: npm run e2e
+        if: success()
