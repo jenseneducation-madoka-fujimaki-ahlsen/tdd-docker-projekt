@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+     strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
       # —— Setup Github Actions 🐙 —————————————————————————————————————————————
       - uses: actions/checkout@master
@@ -16,23 +20,19 @@ jobs:
       - name: Setup NodeJs
         uses: actions/setup-node@v1
         with:
-          node-version: "12.16.2"
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
-
       # —— Tests ✅ ———————————————————————————————————————————————————————————
       - name: Run unit tests
-        run: CI=true npm run test:unit
-        env:
-          CI: true
-        id: unittest
+          - run: npm ci
+          - run: npm run build --if-present
+          - run: npm test
 
       - name: Check Tests Passed
-        if: steps.unittest.outputs.result != 0
-        run: CI=true npm run e2e
-        env:
-          CI: true
+          - run: npm ci
+          - run: npm run build --if-present
+          - run: npm run e2e
+     
