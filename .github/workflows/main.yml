@@ -22,7 +22,7 @@ jobs:
 
       - uses: nanasess/setup-chromedriver@master
         with:
-          chromedriver-version: "85.0.4183.121"
+          chromedriver-version: "77.0.3865.40"
       - run: |
           export DISPLAY=:99
           chromedriver --url-base=/wd/hub &
@@ -37,4 +37,4 @@ jobs:
         env:
           CI: true
 
-      - run: npm run e2e
+      - run: CI=true npm run e2e
