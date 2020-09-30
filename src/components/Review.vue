@@ -54,31 +54,37 @@ export default {
   },
   watch: {
     averageReview(newValue) {
-      if (newValue > 0.5 && newValue < 1.5) {
+      if (newValue == 0) {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue >= 0.5 && newValue < 1.5) {
         this.star1 = true;
         this.star2 = false;
         this.star3 = false;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 1.5 && newValue < 2.5) {
+      } else if (newValue >= 1.5 && newValue < 2.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = false;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 2.5 && newValue < 3.5) {
+      } else if (newValue >= 2.5 && newValue < 3.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 3.5 && newValue < 4.5) {
+      } else if (newValue >= 3.5 && newValue < 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = true;
         this.star5 = false;
-      } else if (newValue > 4.5) {
+      } else if (newValue >= 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
@@ -93,32 +99,37 @@ export default {
       }
     },
     individualReview: function(newValue) {
-      console.log(newValue);
-      if (newValue > 0.5 && newValue < 1.5) {
+      if (newValue == 0) {
+        this.star1 = false;
+        this.star2 = false;
+        this.star3 = false;
+        this.star4 = false;
+        this.star5 = false;
+      } else if (newValue >= 0.5 && newValue < 1.5) {
         this.star1 = true;
         this.star2 = false;
         this.star3 = false;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 1.5 && newValue < 2.5) {
+      } else if (newValue >= 1.5 && newValue < 2.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = false;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 2.5 && newValue < 3.5) {
+      } else if (newValue >= 2.5 && newValue < 3.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = false;
         this.star5 = false;
-      } else if (newValue > 3.5 && newValue < 4.5) {
+      } else if (newValue >= 3.5 && newValue < 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = true;
         this.star5 = false;
-      } else if (newValue > 4.5) {
+      } else if (newValue >= 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
@@ -138,19 +149,19 @@ export default {
     if (this.individualReview == undefined) {
       if (this.averageReview > 0.5 && this.averageReview < 1.5) {
         this.star1 = true;
-      } else if (this.averageReview > 1.5 && this.averageReview < 2.5) {
+      } else if (this.averageReview >= 1.5 && this.averageReview < 2.5) {
         this.star1 = true;
         this.star2 = true;
-      } else if (this.averageReview > 2.5 && this.averageReview < 3.5) {
+      } else if (this.averageReview >= 2.5 && this.averageReview < 3.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
-      } else if (this.averageReview > 3.5 && this.averageReview < 4.5) {
+      } else if (this.averageReview >= 3.5 && this.averageReview < 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = true;
-      } else if (this.averageReview > 4.5) {
+      } else if (this.averageReview >= 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
@@ -164,21 +175,21 @@ export default {
         this.star5 = false;
       }
     } else {
-      if (this.individualReview > 0.5 && this.individualReview < 1.5) {
+      if (this.individualReview >= 0.5 && this.individualReview < 1.5) {
         this.star1 = true;
-      } else if (this.individualReview > 1.5 && this.individualReview < 2.5) {
+      } else if (this.individualReview >= 1.5 && this.individualReview < 2.5) {
         this.star1 = true;
         this.star2 = true;
-      } else if (this.individualReview > 2.5 && this.individualReview < 3.5) {
+      } else if (this.individualReview >= 2.5 && this.individualReview < 3.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
-      } else if (this.individualReview > 3.5 && this.individualReview < 4.5) {
+      } else if (this.individualReview >= 3.5 && this.individualReview < 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
         this.star4 = true;
-      } else if (this.individualReview > 4.5) {
+      } else if (this.individualReview >= 4.5) {
         this.star1 = true;
         this.star2 = true;
         this.star3 = true;
