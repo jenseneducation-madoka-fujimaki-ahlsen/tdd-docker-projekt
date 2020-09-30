@@ -89,15 +89,8 @@ describe("EventDetail.vue", () => {
   // Systemtest
   it("should display 4 starts on rewiew detail when user has set 4 stars on rewiew form", () => {
     //Arrange
-    const expected = false;
-    let oldEvents = true;
-    let wrapper = shallowMount(EventDetail, {
-      propsData: { event, oldEvents },
-      localVue,
-      store,
-    });
+    const setReview = wrapper.findComponent("SetReview");
 
-    let actual = wrapper.find(".remove-button");
     //Assert
     expect(actual.exists()).toBe(expected);
   });
