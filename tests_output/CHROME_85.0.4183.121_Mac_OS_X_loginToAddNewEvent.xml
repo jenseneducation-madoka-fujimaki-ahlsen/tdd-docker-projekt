@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="loginToAddNewEvent"
+    errors="0" failures="0" hostname="" id="" package="loginToAddNewEvent" skipped="0"
+    tests="1" time="6.115" timestamp="">
+  
+    <testcase name="Login to add a new event" classname="loginToAddNewEvent" time="6.115" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

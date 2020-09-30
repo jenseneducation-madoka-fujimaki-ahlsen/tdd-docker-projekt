@@ -85,4 +85,19 @@ describe("EventDetail.vue", () => {
     //Assert
     expect(actual.exists()).toBe(expected);
   });
+  // Systemtest
+  it("should not display button 'Ta bort' for past events", () => {
+    //Arrange
+    const expected = false;
+    let oldEvents = true;
+    let wrapper = shallowMount(EventDetail, {
+      propsData: { event, oldEvents },
+      localVue,
+      store,
+    });
+
+    let actual = wrapper.find(".remove-button");
+    //Assert
+    expect(actual.exists()).toBe(expected);
+  });
 });
