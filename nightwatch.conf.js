@@ -12,7 +12,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          args: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"],
+          args: ["--no-sandbox", "--disable-dev-shm-usage"],
         },
       },
     },
