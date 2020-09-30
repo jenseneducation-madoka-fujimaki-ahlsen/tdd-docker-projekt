@@ -68,7 +68,13 @@ npm run test:unit
 npm run e2e
 ```
 
-# project ------------------------------------------------
+# github actions ------------------------------------------------
+
+### Run unit tests and e2e tests automatically on github action
+
+### It happen when one push to master branch
+
+# project -------------------------------------------------------
 
 ## Project setup
 

@@ -1,5 +1,7 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { shallowMount, createLocalVue, mount } from "@vue/test-utils";
 import EventDetail from "@/components/EventDetail.vue";
+import SetReview from "@/components/SetReview.vue";
+import IndividualReview from "@/components/IndividualReview.vue";
 import Vuex from "vuex";
 
 const localVue = createLocalVue();
@@ -9,6 +11,7 @@ describe("EventDetail.vue", () => {
   let wrapper;
   let store;
   let storeOptions;
+  let oldEvents = true;
   let event = {
     id: 0,
     title: "Höstens picknick",
@@ -18,7 +21,7 @@ describe("EventDetail.vue", () => {
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
     host: "1.jpg",
-    participant: [],
+    participant: ["1.jpg"],
     reviews: [],
   };
 
@@ -74,7 +77,6 @@ describe("EventDetail.vue", () => {
   it("should not display button 'Ta bort' for past events", () => {
     //Arrange
     const expected = false;
-    let oldEvents = true;
     let wrapper = shallowMount(EventDetail, {
       propsData: { event, oldEvents },
       localVue,
