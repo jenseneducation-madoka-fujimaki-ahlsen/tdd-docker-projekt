@@ -3,7 +3,6 @@ module.exports = {
     client
       .url("http://localhost:8080/")
       .waitForElementVisible("body", 1000)
-      .assert.title("tdd-docker-projekt")
       //login -------------------------------------------------------------------
       .assert.visible(".login-button")
       .click(".login-button")
