@@ -10,7 +10,10 @@
           <img :src="require(`@/assets/${event.image}`)" alt="" />
         </div>
         <div class="info">
-          <p class="date">{{ event.date }}</p>
+          <div class="date-time">
+            <p class="date">{{ event.date }}</p>
+            <p class="time">{{ event.time }}</p>
+          </div>
           <p class="title">{{ event.title }}</p>
           <div class="place">
             <img src="@/assets/location.svg" alt="" />
@@ -225,6 +228,14 @@ export default {
       }
 
       .info {
+        .date-time {
+          display: flex;
+
+          .time {
+            margin-left: 8px;
+          }
+        }
+
         .title {
           font-size: 24px;
           margin: 16px 0 40px;

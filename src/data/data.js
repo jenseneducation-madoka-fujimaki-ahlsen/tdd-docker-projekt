@@ -52,6 +52,7 @@ const events = [
     title: "Höstens picknick",
     place: "Vasaparken",
     date: "2020-09-21",
+    time: "14:00",
     image: "picnic.jpg",
     description:
       "Vivamus viverra, augue blandit ultricies euismod, justo nisl condimentum urna, nec sodales orci dolor vitae dolor. Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec.",
@@ -76,6 +77,7 @@ const events = [
     title: "Löpning och avslappnad middag",
     place: "Farsta",
     date: "2020-08-01",
+    time: "10:00",
     image: "run.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu.",
@@ -109,6 +111,7 @@ const events = [
     title: "Figur ritning",
     place: "Gamla stan",
     date: "2020-10-22",
+    time: "15:00",
     image: "drawing.jpg",
     description:
       "Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
@@ -121,6 +124,7 @@ const events = [
     title: "Laga japansk mat",
     place: "Odenplan",
     date: "2020-10-01",
+    time: "17:00",
     image: "food.jpg",
     description:
       "Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
@@ -133,6 +137,7 @@ const events = [
     title: "Game kväll",
     place: "Telefonplan",
     date: "2020-10-01",
+    time: "19:00",
     image: "game.jpg",
     description:
       "Donec at leo et velit faucibus egestas ut vulputate magna. Vivamus eu posuere dui. Etiam semper venenatis purus, quis laoreet est elementum nec. Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. ",
@@ -145,6 +150,7 @@ const events = [
     title: "Språkkafé svenska",
     place: "Odenplan",
     date: "2020-11-30",
+    time: "12:00",
     image: "sweden.jpg",
     description:
       "Quisque mollis ex elit, id pellentesque ipsum hendrerit sodales. Donec consectetur libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
@@ -157,6 +163,7 @@ const events = [
     title: "Frontend utvecklare",
     place: "Stockholm city",
     date: "2019-11-15",
+    time: "18:00",
     image: "pc.jpg",
     description:
       "Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",
@@ -175,6 +182,7 @@ const events = [
     title: "Jul fest",
     place: "Slussen",
     date: "2020-12-20",
+    time: "17:00",
     image: "christmas.jpg",
     description:
       "Libero et ipsum aliquam, sit amet faucibus enim varius. Mauris suscipit, neque vel volutpat eleifend, ex lacus suscipit neque, aliquam suscipit dui nulla in arcu. Aliquam erat volutpat. Nam in pulvinar tortor, iaculis scelerisque lacus. Pellentesque tristique, ligula sed vulputate rhoncus, elit massa imperdiet diam, a gravida purus quam sed purus.",

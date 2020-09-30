@@ -27,15 +27,24 @@
           required="required"
           @keyup="checkForm()"
         />
-        <input
-          v-model="date"
-          type="date"
-          class="date"
-          placeholder="Datum"
-          required="required"
-          @click="checkForm()"
-        />
-
+        <div class="date-time">
+          <input
+            v-model="date"
+            type="date"
+            class="date"
+            placeholder="Datum"
+            required="required"
+            @click="checkForm()"
+          />
+          <input
+            v-model="time"
+            type="time"
+            class="time"
+            placeholder="Tid"
+            required="required"
+            @click="checkForm()"
+          />
+        </div>
         <input
           type="file"
           id="selectedFile"
@@ -57,7 +66,10 @@
           :disabled="!valid"
           :class="{
             'not-valid':
-              !valid || fileName == 'Ladda upp en bild' || date == '',
+              !valid ||
+              fileName == 'Ladda upp en bild' ||
+              date == '' ||
+              time == '',
           }"
         >
           Skapa evenemang
@@ -74,6 +86,7 @@ export default {
     description: "",
     place: "",
     date: "",
+    time: "",
     fileName: "Ladda upp en bild",
     valid: false,
   }),
@@ -108,6 +121,7 @@ export default {
         description: this.description,
         place: this.place,
         date: this.date,
+        time: this.time,
         image: this.fileName,
         host: this.loginUser.image,
         participant: [this.loginUser.image],
@@ -163,6 +177,20 @@ export default {
       border: none;
       border-bottom: 1px solid $dark-gray;
       font-size: 16px;
+    }
+
+    .date-time {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .date {
+        width: 45%;
+      }
+
+      .time {
+        width: 45%;
+      }
     }
 
     textarea {

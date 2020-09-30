@@ -4,7 +4,10 @@
       <div class="image">
         <img :src="require(`@/assets/${event.image}`)" alt="" />
       </div>
-      <p class="date">{{ event.date }}</p>
+      <div class="date-time">
+        <p class="date">{{ event.date }}</p>
+        <p class="time">{{ event.time }}</p>
+      </div>
       <p class="title">{{ event.title }}</p>
       <div class="button-wrap">
         <div class="place-wrap">
@@ -140,9 +143,19 @@ export default {
     }
   }
 
+  .date-time {
+    display: flex;
+  }
+
   .date {
     color: $pink;
     margin-bottom: 8px;
+  }
+
+  .time {
+    color: $pink;
+    margin-bottom: 8px;
+    margin-left: 8px;
   }
 
   .title {
