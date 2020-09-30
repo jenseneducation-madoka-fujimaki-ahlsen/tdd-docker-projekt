@@ -85,13 +85,4 @@ describe("EventDetail.vue", () => {
     //Assert
     expect(actual.exists()).toBe(expected);
   });
-
-  // Systemtest
-  it("should display 4 starts on rewiew detail when user has set 4 stars on rewiew form", () => {
-    //Arrange
-    const setReview = wrapper.findComponent("SetReview");
-
-    //Assert
-    expect(actual.exists()).toBe(expected);
-  });
 });
