@@ -85,8 +85,9 @@ describe("EventDetail.vue", () => {
     //Assert
     expect(actual.exists()).toBe(expected);
   });
+
   // Systemtest
-  it("should not display button 'Ta bort' for past events", () => {
+  it("should display 4 starts on rewiew detail when user has set 4 stars on rewiew form", () => {
     //Arrange
     const expected = false;
     let oldEvents = true;
